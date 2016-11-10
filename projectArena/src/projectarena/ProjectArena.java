@@ -5,17 +5,29 @@
  */
 package projectarena;
 
+import controller.ArenaManager;
+import javafx.application.Application;
+import javafx.stage.Stage;
+
 /**
  *
- * @author S143522
+ * @author Elvir
  */
-public class ProjectArena {
+public class ProjectArena extends Application {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        launch();
     }
-    
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        ArenaManager arena = new ArenaManager();
+        
+        arena.run();
+
+    }
+
 }
