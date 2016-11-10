@@ -6,7 +6,8 @@
 package view;
 
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 /**
@@ -18,17 +19,31 @@ public class ArenaFrame {
     Stage stage;
     BorderPane arenaframe;
     Scene scene;
-    
+
     public ArenaFrame() {
         stage = new Stage();
         arenaframe = new BorderPane();
         scene = new Scene(arenaframe, 1000, 1000);
+
     }
-    
-    public void displayArena(){
+
+    public void displayArena() {
+        
+        arenaStyle();
         stage.setTitle("Test");
         stage.setScene(scene);
         stage.show();
     }
-    
+
+    private void arenaStyle() {
+
+        Background background = new Background(new BackgroundImage(
+                new Image("image/bakgrund.jpg"),
+                BackgroundRepeat.SPACE,
+                BackgroundRepeat.SPACE,
+                BackgroundPosition.DEFAULT,
+                BackgroundSize.DEFAULT));
+
+        arenaframe.setBackground(background);
+    }
 }
