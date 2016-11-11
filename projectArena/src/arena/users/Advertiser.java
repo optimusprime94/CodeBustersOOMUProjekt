@@ -10,5 +10,5 @@ package arena.users;
  * @author S153298
  */
 public class Advertiser extends User{
-    //Hej
+    
 }
