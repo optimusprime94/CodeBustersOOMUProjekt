@@ -5,6 +5,7 @@
  */
 package gameinstaller;
 
+import exceptions.GameIDNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,9 +26,9 @@ public class GameInstaller {
             // TODO code application logic here
             Library library = new Library("input.txt");
             library.initializeLibrary();
-//            Game game = new Game("Generic game 8", library);
-//            library.installNewGame(game);
-//        game = new Game("Generic game 4", library);
+//          Game game = new Game("Generic game 8", library);
+//          library.installNewGame(game);
+//          game = new Game("Generic game 4", library);
             Game game = library.getGame(8);
             library.deleteGame(game);
             library.printLibrary();
