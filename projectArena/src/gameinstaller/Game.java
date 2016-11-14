@@ -5,6 +5,8 @@
  */
 package gameinstaller;
 
+import exceptions.GameIDNotFoundException;
+
 /**
  *
  * @author S153298
