@@ -14,7 +14,7 @@ import javafx.scene.layout.StackPane;
 
 /**
  *
- * @author S143522
+ * @author S143522 (Elvir Dzeko)
  */
 public class AdvertisementView {
 

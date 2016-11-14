@@ -12,7 +12,7 @@ import javafx.scene.layout.BorderPane;
 
 /**
  *
- * @author S143522
+ * @author S143522 (Elvir Dzeko)
  */
 class GameLibraryView {
 

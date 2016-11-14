@@ -33,7 +33,7 @@ public class ArenaFrame {
         menubar = new MenuBar();
         library  = new GameLibraryView(arenaframe);
         AdvertisementView adView = new AdvertisementView(arenaframe);
-        adView.setAdvertisement("image/VisitorAd.gif");
+        adView.setAdvertisement("image/VisitorAd.gif"); // sätter reklambilden
     }
 
     public void displayArena() {
