@@ -6,6 +6,7 @@
 package view;
 
 import javafx.collections.FXCollections;
+import javafx.geometry.Insets;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.image.Image;
@@ -20,7 +21,7 @@ import javafx.scene.layout.GridPane;
 class GameLibraryView {
 
     private BorderPane arenaframe;
-    private int imageSize = 50;
+    private int imageSize = 100;
     private String[] gameTitles = {"Assassin's Creed 2", "Othello", "Nicks fantasier"};
  
     GameLibraryView(BorderPane arenaframe) {
@@ -30,12 +31,16 @@ class GameLibraryView {
 
     public void showGameLibrary() {
         GridPane gamesgrid = new GridPane();
-        Image i1 = new Image("image/icons/othello.png", imageSize, imageSize, false, false);
+        gamesgrid.setHgap(15); //horizontal gap in pixels => that's what you are asking for
+        gamesgrid.setVgap(15); //vertical gap in pixels
+        gamesgrid.setPadding(new Insets(50, 15, 15, 50)); // top, right, bottom, left: mellanrum för gridens kanter.
+        Image i1 = new Image("image/icons/game_othello2.png", imageSize, imageSize, false, false);
         ImageView g1 = new ImageView(i1);
-        Image i2 = new Image("image/icons/test.jpg", imageSize, imageSize, false, false);
+        Image i2 = new Image("image/icons/game_assassinscreed2.png", imageSize, imageSize, false, false);
         ImageView g2 = new ImageView(i2);
-        Image i3 = new Image("image/icons/google.png", imageSize, imageSize, false, false);
+        Image i3 = new Image("image/icons/game_pacman2.png", imageSize, imageSize, false, false);
         ImageView g3 = new ImageView(i3);
+        
         
            gamesgrid.addRow(0, g1,g2,g3);
 //        for(int row = 0; row < 4; row++)
