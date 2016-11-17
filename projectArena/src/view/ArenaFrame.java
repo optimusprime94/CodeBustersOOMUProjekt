@@ -19,21 +19,27 @@ import javafx.stage.Stage;
  */
 public class ArenaFrame {
 
-    Stage stage;
-    BorderPane arenaframe;
-    Scene scene;
-    MenuBar menubar;
-    GameLibraryView library;
-
+    private Stage stage;
+    private BorderPane arenaframe;
+    private int minWidth = 800, minHeight = 600;
+    private Scene scene;
+    private MenuBar menubar;
+    private GameLibraryView library;
 
     public ArenaFrame() {
+        
+        /* skapar stage och sätter stagens minsta möjliga storlek. */
         stage = new Stage();
+        stage.setMinHeight(minHeight);
+        stage.setMinWidth(minWidth);
+        
         arenaframe = new BorderPane();
-        scene = new Scene(arenaframe, 800, 600);
+        scene = new Scene(arenaframe, minWidth, minHeight);
         menubar = new MenuBar();
-        library  = new GameLibraryView(arenaframe);
+        library = new GameLibraryView(arenaframe);
+
         AdvertisementView adView = new AdvertisementView(arenaframe);
-        adView.setAdvertisement("image/VisitorAd.gif"); // sätter reklambilden
+        adView.setAdvertisement("image/ad_arena.png"); // sätter reklambilden
     }
 
     public void displayArena() {
@@ -48,7 +54,7 @@ public class ArenaFrame {
     private void arenaStyle() {
 
         Background background = new Background(new BackgroundImage(
-                new Image("image/lightTheme2.jpg"),
+                new Image("image/lightTheme2.png"),
                 BackgroundRepeat.SPACE,
                 BackgroundRepeat.SPACE,
                 BackgroundPosition.DEFAULT,
@@ -61,24 +67,26 @@ public class ArenaFrame {
         arenaframe.setTop(menubar);
 
         menubar.setStyle(
-                "-fx-padding: 5 50 8 50;"
+                "-fx-font-size: 20 pt;" // menubar, text storlek.
+                + "-fx-font-family: Segoe UI Light;"
+                + "-fx-padding: 10 50 10 50;" // top, right, bottom, left
                 + "-fx-background-color: rgba(255, 255, 255, 0.5);"
                 + "-fx-effect: dropshadow(gaussian, Black, 50, 0, 0, 0);"
                 + "-fx-background-insets: 50;");
-        
+
         Menu userAccountMenu = new Menu("Account");
         Menu gamesMenu = new Menu("Library");
         Menu homeMenu = new Menu("Home");
-       
+
         /* skapar och sätter in items i gamesMenu. */
         MenuItem shopItem = new MenuItem("Shop");
-        MenuItem gamesItem = new MenuItem("Games");     
+        MenuItem gamesItem = new MenuItem("Games");
         gamesMenu.getItems().addAll(shopItem, gamesItem);
-        
+
         /* skapar och sätter in items i homeMenu. */
         MenuItem homeItem = new MenuItem("Go to home");
         homeMenu.getItems().addAll(homeItem);
-        
+
         gamesItem.setOnAction(event -> library.showGameLibrary());
         shopItem.setOnAction(event -> System.out.println("SHOP"));
         homeItem.setOnAction(event -> System.out.println("Welcome home!"));
