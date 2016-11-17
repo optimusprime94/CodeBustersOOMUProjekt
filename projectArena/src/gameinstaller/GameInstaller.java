@@ -21,22 +21,22 @@ public class GameInstaller {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        try {
+//        try {
             //        try {
             // TODO code application logic here
-            Library library = new Library("input.txt");
+            Library library = new Library("GameDatabase.txt");
             library.initializeLibrary();
-//          Game game = new Game("Generic game 8", library);
-//          library.installNewGame(game);
+            Game game = new Game("Generic game 8", library);
+            library.installNewGame(game);
 //          game = new Game("Generic game 4", library);
-            Game game = library.getGame(8);
-            library.deleteGame(game);
+//            game = library.getGame(8);
+//            library.deleteGame(game);
             library.printLibrary();
 //        } catch (GameIDNotFoundException ex) {
 //            System.out.println(ex.getMessage());
 //        }
-        } catch (GameIDNotFoundException ex) {
-            Logger.getLogger(GameInstaller.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        } catch (GameIDNotFoundException ex) {
+//            Logger.getLogger(GameInstaller.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 }
