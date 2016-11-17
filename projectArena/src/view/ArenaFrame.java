@@ -24,7 +24,7 @@ public class ArenaFrame {
     Scene scene;
     MenuBar menubar;
     GameLibraryView library;
-    Menu userAccount = new Menu("Account");
+
 
     public ArenaFrame() {
         stage = new Stage();
@@ -48,7 +48,7 @@ public class ArenaFrame {
     private void arenaStyle() {
 
         Background background = new Background(new BackgroundImage(
-                new Image("image/greenBG.jpg"),
+                new Image("image/lightTheme2.jpg"),
                 BackgroundRepeat.SPACE,
                 BackgroundRepeat.SPACE,
                 BackgroundPosition.DEFAULT,
@@ -60,13 +60,29 @@ public class ArenaFrame {
     private void setupMenu() {
         arenaframe.setTop(menubar);
 
-        Menu gamesMenu = new Menu("Games");
-        MenuItem shop = new MenuItem("Shop");
-        MenuItem games = new MenuItem("Games");
-        gamesMenu.getItems().addAll(shop, games);
-        games.setOnAction(event -> library.showGameLibrary());
-        shop.setOnAction(event -> System.out.println("SHOP"));
+        menubar.setStyle(
+                "-fx-padding: 5 50 8 50;"
+                + "-fx-background-color: rgba(255, 255, 255, 0.5);"
+                + "-fx-effect: dropshadow(gaussian, Black, 50, 0, 0, 0);"
+                + "-fx-background-insets: 50;");
+        
+        Menu userAccountMenu = new Menu("Account");
+        Menu gamesMenu = new Menu("Library");
+        Menu homeMenu = new Menu("Home");
+       
+        /* skapar och sätter in items i gamesMenu. */
+        MenuItem shopItem = new MenuItem("Shop");
+        MenuItem gamesItem = new MenuItem("Games");     
+        gamesMenu.getItems().addAll(shopItem, gamesItem);
+        
+        /* skapar och sätter in items i homeMenu. */
+        MenuItem homeItem = new MenuItem("Go to home");
+        homeMenu.getItems().addAll(homeItem);
+        
+        gamesItem.setOnAction(event -> library.showGameLibrary());
+        shopItem.setOnAction(event -> System.out.println("SHOP"));
+        homeItem.setOnAction(event -> System.out.println("Welcome home!"));
 
-        menubar.getMenus().addAll(gamesMenu, userAccount);
+        menubar.getMenus().addAll(homeMenu, gamesMenu, userAccountMenu);
     }
 }
