@@ -10,5 +10,5 @@ package arena.users;
  * @author S153298
  */
 public abstract class User {
-    //This is the good luck comment, repost in 50 seconds and you will have good luck forever
+    private int userID;
 }

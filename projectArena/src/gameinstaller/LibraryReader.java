@@ -39,6 +39,7 @@ public class LibraryReader {
     
     
     public void readLibrary(ArrayList<Game> gameList, int size){
+        getInput();
         while(in.hasNext()){
             gameList.add(new Game(getInput(),getInput(),getInput()));
         }
