@@ -5,6 +5,9 @@
  */
 package view;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.scene.control.ListView;
@@ -22,11 +25,11 @@ class GameLibraryView {
 
     private BorderPane arenaframe;
     private int imageSize = 100;
-    private String[] gameTitles = {"Assassin's Creed 2", "Othello", "Nicks fantasier"};
- 
+    private ArrayList<String> gamelist;
+
     GameLibraryView(BorderPane arenaframe) {
         this.arenaframe = arenaframe;
-
+        gamelist = new ArrayList<>();
     }
 
     public void showGameLibrary() {
@@ -34,24 +37,24 @@ class GameLibraryView {
         gamesgrid.setHgap(15); //horizontal gap in pixels => that's what you are asking for
         gamesgrid.setVgap(15); //vertical gap in pixels
         gamesgrid.setPadding(new Insets(50, 15, 15, 50)); // top, right, bottom, left: mellanrum för gridens kanter.
-        Image i1 = new Image("image/icons/game_othello2.png", imageSize, imageSize, false, false);
-        ImageView g1 = new ImageView(i1);
-        Image i2 = new Image("image/icons/game_assassinscreed2.png", imageSize, imageSize, false, false);
-        ImageView g2 = new ImageView(i2);
-        Image i3 = new Image("image/icons/game_pacman2.png", imageSize, imageSize, false, false);
-        ImageView g3 = new ImageView(i3);
+       // Image i1 = new Image("image/icons/game_othello2.png", imageSize, imageSize, false, false);
+
+        //illfälligt
+        gamelist.add("othello2.png");
+        gamelist.add("pacman2.png");
+        gamelist.add("assassinscreed2.png");
         
-        
-           gamesgrid.addRow(0, g1,g2,g3);
-//        for(int row = 0; row < 4; row++)
-//            for(int col = 0; col < 4; col++)
-//                gamesgrid.add(gameView, row, col);
-        
-//        ListView<Image> gameList = new ListView<>(FXCollections.observableArrayList(gameImage));
-//        gameList.setStyle("-fx-padding: 5 50 8 50;");
-//        gameList.setPrefSize(400, 400);
-//        gameList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-       arenaframe.setCenter(gamesgrid);
-      
+        Iterator it = gamelist.iterator();
+        int row = 0;
+        /* Itererar igenom alla spel och lägger till deras icon till vyn */
+        while (it.hasNext()) {
+            for (int i = 0; i < 3; i++) {
+                if(!it.hasNext()) break;
+                Image gameImg = new Image("image/icons/game_" + it.next(), imageSize, imageSize, false, false);
+                gamesgrid.addRow(row, new ImageView(gameImg));
+            }
+            row++;
+        }
+        arenaframe.setCenter(gamesgrid);
     }
 }
