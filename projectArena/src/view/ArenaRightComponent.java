@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package arena.users;
+package view;
 
 /**
  *
- * @author S153298
+ * @author S143522
  */
-public abstract class User {
-    private int userID;
+public class ArenaRightComponent {
+    
 }
