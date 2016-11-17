@@ -25,6 +25,7 @@ public class GameInstaller {
             //        try {
             // TODO code application logic here
             Library library = new Library("GameDatabase.txt");
+            
             library.initializeLibrary();
             Game game = new Game("Generic game 8", library);
             library.installNewGame(game);
