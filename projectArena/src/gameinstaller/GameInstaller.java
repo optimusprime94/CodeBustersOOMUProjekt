@@ -6,6 +6,7 @@
 package gameinstaller;
 
 import exceptions.GameIDNotFoundException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,17 +23,30 @@ public class GameInstaller {
      */
     public static void main(String[] args) {
 //        try {
-            //        try {
-            // TODO code application logic here
-            Library library = new Library("GameDatabase.txt");
-            
-            library.initializeLibrary();
-            Game game = new Game("Generic game 8", library);
+          
+            Library library = new Library();
+            try
+            {
+                library.initializeLibrary();
+            }
+            catch(SQLException ex)
+            {
+                System.out.printf(ex.getMessage());
+            }
+            Game game = new Game("Mario kart4", "1");
+            try
+            {
             library.installNewGame(game);
+            }
+             catch(SQLException ex)
+            {
+                System.out.printf(ex.getMessage());
+            }
+            library.deleteGame(game);
 //          game = new Game("Generic game 4", library);
 //            game = library.getGame(8);
 //            library.deleteGame(game);
-            library.printLibrary();
+            
 //        } catch (GameIDNotFoundException ex) {
 //            System.out.println(ex.getMessage());
 //        }

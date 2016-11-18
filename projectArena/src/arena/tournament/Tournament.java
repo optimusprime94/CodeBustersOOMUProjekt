@@ -16,11 +16,23 @@ public abstract class Tournament
     protected int numberOfPlayers, maxNumberOfPlayers, nextID;
     protected Player [] players;
     
+    public abstract void runTournament();
+    
+    
     public void announce()
     {
         
     }
-    public abstract void runTournament();
+    
+    public void archive()
+    {
+        
+    }
+    
+    public void addAdert()
+    {
+        
+    }
     public void applyForTournament(Player player)
     {
         if (numberOfPlayers< maxNumberOfPlayers)
@@ -31,6 +43,5 @@ public abstract class Tournament
             nextID++;
         }
         
-    }
-    
+    } 
 }

@@ -7,6 +7,10 @@ package gameinstaller;
 
 import exceptions.GameIDNotFoundException;
 import java.io.FileNotFoundException;
+import java.sql.*;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,59 +27,91 @@ public class Library {
     private int nextId = 0;
     
     
-    public Library(String libraryFile){
-        try {
-            reader = new LibraryReader(libraryFile);
-            size = Integer.valueOf(reader.getInput());
-            writer = new LibraryWriter(libraryFile);
-            gamesLibrary = new ArrayList<>();
-        } catch (FileNotFoundException ex) {
-            System.out.println(ex.getMessage());
+    public Library(){
+        gamesLibrary = new ArrayList<>();
+        size = 0;
+    }
+    
+    public void initializeLibrary() throws SQLException{
+        try
+        {
+            updateLibrary();
+        }
+        catch (SQLException ex)
+        {
+            System.out.print(ex.getMessage());
         }
     }
-    
-    public void initializeLibrary(){
-        reader.readLibrary(gamesLibrary, size);
-        setNextId();
+    public void updateLibrary() throws SQLException
+    {
+        Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
+        Statement statement = connection.createStatement();
+        String message= "select* from gameLibrary";
+        ResultSet resultSet = statement.executeQuery(message);
+        while (resultSet.next())
+        {
+            String id = resultSet.getString(1);
+            String name = resultSet.getString(2);
+            String visibility = resultSet.getString(3);
+            Game game = new Game(id, name, visibility);
+            gamesLibrary.add(game);
+            size++;
+        }
+  
     }
     
-    public void printLibrary(){
-        writer.writeLibrary(gamesLibrary, size);
-    }
-    public void installNewGame(Game newGame){
-        gamesLibrary.add(newGame);
-        size++;
-        setNextId();
+    public void installNewGame(Game newGame) throws SQLException
+    {
+        Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
+        Statement statement = connection.createStatement();
+       
+        String gameName = newGame.getGameName();
+        int visibility =0;
+        if (newGame.getGameVisibility())
+        {
+            visibility = 1;
+        }
+        String message = "insert into gameLibrary (gameName, visibility) VALUES ('"+gameName+"', "+visibility+");";
+        statement.executeUpdate(message);
+        connection.close();
+         try
+        {
+            updateLibrary();
+        }
+        catch (SQLException ex)
+        {
+            System.out.print(ex.getMessage());
+        }
+        
     }
     
-    private void setNextId(){
-        for(int i = 0; i < size; i++){
-            if (gamesLibrary.get(i).getGameId() >= nextId)
-                nextId = gamesLibrary.get(i).getGameId() + 1;
+    public void deleteGame(Game gameToBeDeleted) throws SQLException{
+        
+        Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
+        Statement statement = connection.createStatement();
+        int id = gameToBeDeleted.getGameId();
+        String message = "delete from gameLibrary gameID = "+id+");";
+        statement.executeUpdate(message);
+        connection.close();
+        try
+        {
+            updateLibrary();
+        }
+        catch (SQLException ex)
+        {
+            System.out.print(ex.getMessage());
         }
     }
-    public int generateNewId(){
-        return nextId++;
-    }
-    public void deleteGame(Game gameToBeDeleted){
-//        int i;
-//        for(i = 0; i < size; i++){
-//            if (gamesLibrary[i].equals(gameToBeDeleted)){
-//                size--;
-//                break;
-//            }
-//        }
-//        for(int j = i; j < size; j++){
-//            gamesLibrary[j] = gamesLibrary[j+1];
-//        }
-                    gamesLibrary.remove(gameToBeDeleted);
-                    size--;
-    }
-    public Game getGame(int id) throws GameIDNotFoundException{
-        for(int i = 0; i < size; i++){
+    public Game getGame(int id) throws GameIDNotFoundException
+    {
+        
+        for(int i = 0; i < size; i ++)
+        {
             if (gamesLibrary.get(i).getGameId() == id)
-                return gamesLibrary.get(i);
+            {
+                game = gamesLibrary.get(i);
+            }
         }
-        throw new GameIDNotFoundException(id);
+        return(game);
     }
 }
