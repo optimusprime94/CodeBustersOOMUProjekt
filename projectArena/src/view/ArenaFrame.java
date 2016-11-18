@@ -66,6 +66,7 @@ public class ArenaFrame {
     private void setupMenu() {
         arenaframe.setTop(menubar);
 
+        
         menubar.setStyle(
                 "-fx-font-size: 20 pt;" // menubar, text storlek.
                 + "-fx-font-family: Segoe UI Light;"
@@ -77,6 +78,7 @@ public class ArenaFrame {
         Menu userAccountMenu = new Menu("Account");
         Menu gamesMenu = new Menu("Library");
         Menu homeMenu = new Menu("Home");
+        Menu arenaMenu = new Menu("Arena");
 
         /* skapar och sätter in items i gamesMenu. */
         MenuItem shopItem = new MenuItem("Shop");
@@ -86,11 +88,16 @@ public class ArenaFrame {
         /* skapar och sätter in items i homeMenu. */
         MenuItem homeItem = new MenuItem("Go to home");
         homeMenu.getItems().addAll(homeItem);
+        
+        MenuItem aboutUsItem = new MenuItem("About us");
+        MenuItem aboutArenaItem = new MenuItem("About Arena");
+        arenaMenu.getItems().addAll(aboutUsItem, aboutArenaItem);
+        aboutArenaItem.setOnAction(e -> new AboutArenaView(arenaframe));
 
         gamesItem.setOnAction(event -> library.showGameLibrary());
         shopItem.setOnAction(event -> System.out.println("SHOP"));
         homeItem.setOnAction(event -> System.out.println("Welcome home!"));
 
-        menubar.getMenus().addAll(homeMenu, gamesMenu, userAccountMenu);
+        menubar.getMenus().addAll(homeMenu, gamesMenu, userAccountMenu, arenaMenu);
     }
 }

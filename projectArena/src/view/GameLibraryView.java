@@ -24,33 +24,43 @@ import javafx.scene.layout.GridPane;
 class GameLibraryView {
 
     private BorderPane arenaframe;
-    private int imageSize = 100;
-    private ArrayList<String> gamelist;
+    private GridPane gamesgrid;
+    private ArrayList<String> gamelist = new ArrayList<>();
+    private int width = 150, height = 250;
 
     GameLibraryView(BorderPane arenaframe) {
         this.arenaframe = arenaframe;
-        gamelist = new ArrayList<>();
+        gamesgrid = new GridPane();
     }
 
     public void showGameLibrary() {
-        GridPane gamesgrid = new GridPane();
-        gamesgrid.setHgap(15); //horizontal gap in pixels => that's what you are asking for
-        gamesgrid.setVgap(15); //vertical gap in pixels
-        gamesgrid.setPadding(new Insets(50, 15, 15, 50)); // top, right, bottom, left: mellanrum för gridens kanter.
-       // Image i1 = new Image("image/icons/game_othello2.png", imageSize, imageSize, false, false);
 
-        //illfälligt
-        gamelist.add("othello2.png");
-        gamelist.add("pacman2.png");
-        gamelist.add("assassinscreed2.png");
-        
+        /* gap: mellanrum mellan ikonerna (i pixlar), och padding är mellanrum runt gridens kanter.*/
+        gamesgrid.setHgap(15);
+        gamesgrid.setVgap(15);
+        gamesgrid.setPadding(new Insets(50, 15, 15, 50)); // top, right, bottom, left: mellanrum för gridens kanter.
+
+        /* rensar allt i gamesgrid och gamelist, innan spelen uppdateras. */
+        gamesgrid.getChildren().clear();
+        gamelist.clear();
+        /* lägg till spel efter här: */
+
+        gamelist.add("pacmanv3.png");
+        gamelist.add("assassinscreed2v3.png");
+        gamelist.add("assassinscreed2v3.png");
+        gamelist.add("assassinscreed2v3.png");
+        gamelist.add("assassinscreed2v3.png");
+        gamelist.add("assassinscreed2v3.png");
+
         Iterator it = gamelist.iterator();
         int row = 0;
         /* Itererar igenom alla spel och lägger till deras icon till vyn */
         while (it.hasNext()) {
             for (int i = 0; i < 3; i++) {
-                if(!it.hasNext()) break;
-                Image gameImg = new Image("image/icons/game_" + it.next(), imageSize, imageSize, false, false);
+                if (!it.hasNext()) {
+                    break;
+                }
+                Image gameImg = new Image("image/icons/game_" + it.next(), 150, 250, false, false);
                 gamesgrid.addRow(row, new ImageView(gameImg));
             }
             row++;
