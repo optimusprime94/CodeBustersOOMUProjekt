@@ -18,17 +18,21 @@ public class Game {
     private int gameId;
 
 
-    public Game(String name, Library library) {
+    public Game(String name, String visibleToPublic ) {
         this.gameName = name;
-        this.gameId = library.generateNewId();
+        if (visibleToPublic.equals("1")) {
+            this.visibleToPublic = true;
+        } else if (visibleToPublic.equals("0")) {
+            this.visibleToPublic = false;
+        }
     }
 
     public Game(String gameId, String gameName, String visibleToPublic) {
         this.gameId = Integer.valueOf(gameId);
         this.gameName = gameName;
-        if (visibleToPublic.equals("Visible")) {
+        if (visibleToPublic.equals("1")) {
             this.visibleToPublic = true;
-        } else if (visibleToPublic.equals("Invisible")) {
+        } else if (visibleToPublic.equals("0")) {
             this.visibleToPublic = false;
         }
     }
