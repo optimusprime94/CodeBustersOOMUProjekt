@@ -6,13 +6,12 @@
 package view;
 
 import java.awt.Desktop;
-import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -26,17 +25,25 @@ public class AdvertisementView {
 
     private String advertisementFile;
     private BorderPane arenaframe; //referens till arenas huvud frame.
+    private StackPane advertPane;
 
     public AdvertisementView(BorderPane arenaframe) {
         this.arenaframe = arenaframe;
-
+        advertPane = new StackPane();
     }
 
     private void showAdvertisement() {
-        Image adImage = new Image(advertisementFile, arenaframe.widthProperty().intValue(), 100, false, false);
+        Image adImage = new Image(advertisementFile, arenaframe.widthProperty().doubleValue() - 20, 80, false, false);
         ImageView adView = new ImageView(adImage);
-        adView.setFitWidth(arenaframe.getWidth());
-        arenaframe.setBottom(adView);
+        
+        adView.setFitWidth(arenaframe.widthProperty().subtract(50).doubleValue());
+        adView.setFitHeight(80);
+        
+        advertPane.getChildren().add(adView);
+        advertPane.alignmentProperty().set(Pos.CENTER);
+        advertPane.setPadding(new Insets(10,10,10,10));
+        adView.xProperty().bindBidirectional(arenaframe.layoutXProperty()); // binder den till arenaframens bredd.
+        arenaframe.setBottom(advertPane);
 
         adView.setOnMouseClicked(e -> {
             try {

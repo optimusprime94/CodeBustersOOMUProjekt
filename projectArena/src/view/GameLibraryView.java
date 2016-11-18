@@ -5,7 +5,11 @@
  */
 package view;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 import javafx.collections.FXCollections;
+import javafx.geometry.Insets;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.image.Image;
@@ -20,33 +24,47 @@ import javafx.scene.layout.GridPane;
 class GameLibraryView {
 
     private BorderPane arenaframe;
-    private int imageSize = 50;
-    private String[] gameTitles = {"Assassin's Creed 2", "Othello", "Nicks fantasier"};
- 
+    private GridPane gamesgrid;
+    private ArrayList<String> gamelist = new ArrayList<>();
+    private int width = 150, height = 250;
+
     GameLibraryView(BorderPane arenaframe) {
         this.arenaframe = arenaframe;
-
+        gamesgrid = new GridPane();
     }
 
     public void showGameLibrary() {
-        GridPane gamesgrid = new GridPane();
-        Image i1 = new Image("image/icons/othello.png", imageSize, imageSize, false, false);
-        ImageView g1 = new ImageView(i1);
-        Image i2 = new Image("image/icons/test.jpg", imageSize, imageSize, false, false);
-        ImageView g2 = new ImageView(i2);
-        Image i3 = new Image("image/icons/google.png", imageSize, imageSize, false, false);
-        ImageView g3 = new ImageView(i3);
-        
-           gamesgrid.addRow(0, g1,g2,g3);
-//        for(int row = 0; row < 4; row++)
-//            for(int col = 0; col < 4; col++)
-//                gamesgrid.add(gameView, row, col);
-        
-//        ListView<Image> gameList = new ListView<>(FXCollections.observableArrayList(gameImage));
-//        gameList.setStyle("-fx-padding: 5 50 8 50;");
-//        gameList.setPrefSize(400, 400);
-//        gameList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-       arenaframe.setCenter(gamesgrid);
-      
+
+        /* gap: mellanrum mellan ikonerna (i pixlar), och padding är mellanrum runt gridens kanter.*/
+        gamesgrid.setHgap(15);
+        gamesgrid.setVgap(15);
+        gamesgrid.setPadding(new Insets(50, 15, 15, 50)); // top, right, bottom, left: mellanrum för gridens kanter.
+
+        /* rensar allt i gamesgrid och gamelist, innan spelen uppdateras. */
+        gamesgrid.getChildren().clear();
+        gamelist.clear();
+        /* lägg till spel efter här: */
+
+        gamelist.add("pacmanv3.png");
+        gamelist.add("assassinscreed2v3.png");
+        gamelist.add("assassinscreed2v3.png");
+        gamelist.add("assassinscreed2v3.png");
+        gamelist.add("assassinscreed2v3.png");
+        gamelist.add("assassinscreed2v3.png");
+
+        Iterator it = gamelist.iterator();
+        int row = 0;
+        /* Itererar igenom alla spel och lägger till deras icon till vyn */
+        while (it.hasNext()) {
+            for (int i = 0; i < 3; i++) {
+                if (!it.hasNext()) {
+                    break;
+                }
+                Image gameImg = new Image("image/icons/game_" + it.next(), 150, 250, false, false);
+                gamesgrid.addRow(row, new ImageView(gameImg));
+            }
+            row++;
+        }
+        arenaframe.setCenter(gamesgrid);
     }
 }
