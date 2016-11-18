@@ -44,6 +44,7 @@ public class Library {
     }
     public void updateLibrary() throws SQLException
     {
+        size = 0;
         Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
         Statement statement = connection.createStatement();
         String message= "select* from gameLibrary";
@@ -90,7 +91,7 @@ public class Library {
         Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
         Statement statement = connection.createStatement();
         int id = gameToBeDeleted.getGameId();
-        String message = "delete from gameLibrary gameID = "+id+");";
+        String message = "delete from gameLibrary where gameID = "+id+";";
         statement.executeUpdate(message);
         connection.close();
         try
@@ -104,14 +105,13 @@ public class Library {
     }
     public Game getGame(int id) throws GameIDNotFoundException
     {
-        
         for(int i = 0; i < size; i ++)
         {
             if (gamesLibrary.get(i).getGameId() == id)
             {
-                game = gamesLibrary.get(i);
+                return(gamesLibrary.get(i));
             }
         }
-        return(game);
+        throw new GameIDNotFoundException(id);
     }
 }
