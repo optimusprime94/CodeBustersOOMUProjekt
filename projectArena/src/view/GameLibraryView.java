@@ -11,11 +11,14 @@ import java.util.Iterator;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 
 /**
  *
@@ -25,12 +28,15 @@ class GameLibraryView {
 
     private BorderPane arenaframe;
     private GridPane gamesgrid;
-    private ArrayList<String> gamelist = new ArrayList<>();
+    private ArrayList<String> gamelist;
+    private ScrollPane scrollpane;
     private int width = 150, height = 250;
 
     GameLibraryView(BorderPane arenaframe) {
+        this.scrollpane = new ScrollPane();
         this.arenaframe = arenaframe;
-        gamesgrid = new GridPane();
+        this.gamesgrid = new GridPane();
+        this.gamelist = new ArrayList<>();
     }
 
     public void showGameLibrary() {
@@ -51,6 +57,10 @@ class GameLibraryView {
         gamelist.add("assassinscreed2v3.png");
         gamelist.add("assassinscreed2v3.png");
         gamelist.add("assassinscreed2v3.png");
+        gamelist.add("assassinscreed2v3.png");
+        gamelist.add("assassinscreed2v3.png");
+        gamelist.add("assassinscreed2v3.png");
+        gamelist.add("assassinscreed2v3.png");
 
         Iterator it = gamelist.iterator();
         int row = 0;
@@ -65,6 +75,11 @@ class GameLibraryView {
             }
             row++;
         }
-        arenaframe.setCenter(gamesgrid);
+        setupScrollbar();
+    }
+
+    private void setupScrollbar() {
+        scrollpane.setContent(gamesgrid);
+        arenaframe.setCenter(scrollpane);
     }
 }

@@ -16,7 +16,7 @@ public class ArenaManager {
     ArenaFrame frame;
 
     public ArenaManager() {
-        frame = new ArenaFrame();
+        frame = new ArenaFrame("username");
 
     }
 
