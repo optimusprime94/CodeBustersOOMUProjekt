@@ -30,6 +30,7 @@ public class AboutArenaView {
                 + "other companies apparently can't: Precision, Uniqueness, unambiguousness and quality.\n";
         
         TextArea textarea = new TextArea(info);
+        textarea.setStyle("-fx-background-color: transparent;");
         textarea.setEditable(false);
                 textarea.setPrefRowCount(10);
         textarea.setPrefColumnCount(100);
