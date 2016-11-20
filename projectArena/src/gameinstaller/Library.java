@@ -21,6 +21,9 @@ public class Library {
         gamesLibrary = new ArrayList<>();
         size = 0;
     }
+    public ArrayList getgameLibrary(){
+        return this.gamesLibrary;
+    }
     
     public void initializeLibrary() throws SQLException{
         try
@@ -80,12 +83,11 @@ public class Library {
         } 
     }
     
-    public void deleteGame(Game gameToBeDeleted) throws SQLException{
+    public void deleteGame(int id) throws SQLException{
         
         Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
         Statement statement = connection.createStatement();
-        int id = gameToBeDeleted.getGameId();
-        String SQLMessage = "delete from gameLibrary gameID = "+id+";";
+        String SQLMessage = "delete from gameLibrary where gameID = "+id+";";
         statement.executeUpdate(SQLMessage);
         connection.close();
         try
@@ -96,6 +98,10 @@ public class Library {
         {
             System.out.print(ex.getMessage());
         }
+    }
+      public void deleteGame(Game game) throws SQLException{
+        int gameID = game.getGameId();
+        deleteGame(gameID);
     }
     public Game getGame(int id) throws GameIDNotFoundException
     {
