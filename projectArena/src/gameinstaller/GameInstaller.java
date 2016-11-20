@@ -8,6 +8,7 @@ package gameinstaller;
 import exceptions.GameIDNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.sql.*;
 
 
 
@@ -21,23 +22,31 @@ public class GameInstaller {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-//        try {
-            //        try {
-            // TODO code application logic here
-            Library library = new Library("GameDatabase.txt");
-            
+
+        Library library = new Library();
+        try{
             library.initializeLibrary();
-            Game game = new Game("Generic game 8", library);
+        }
+            
+        catch(SQLException ex){
+            System.out.printf(ex.getMessage());
+        }
+        Game game = new Game("Marcus plockar 3", "1");
+        try{
             library.installNewGame(game);
-//          game = new Game("Generic game 4", library);
-//            game = library.getGame(8);
-//            library.deleteGame(game);
-            library.printLibrary();
-//        } catch (GameIDNotFoundException ex) {
-//            System.out.println(ex.getMessage());
-//        }
-//        } catch (GameIDNotFoundException ex) {
-//            Logger.getLogger(GameInstaller.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        }
+            
+        catch(SQLException ex){
+            System.out.printf(ex.getMessage());
+        }
+            
+        try{
+            Game gameToDelete = library.getGame(6);
+            library.deleteGame(gameToDelete);
+        }
+            
+        catch (Exception ex){
+            System.out.printf(ex.getMessage());
+        }
     }
 }
