@@ -31,7 +31,7 @@ public class GameInstaller {
         catch(SQLException ex){
             System.out.printf(ex.getMessage());
         }
-        Game game = new Game("Marcus plockar 3", "1");
+        Game game = new Game("GameName", "1", "gamePath", "imagePath");
         try{
             library.installNewGame(game);
         }

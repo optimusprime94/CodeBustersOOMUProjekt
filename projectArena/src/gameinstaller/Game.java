@@ -16,18 +16,22 @@ public class Game {
     private boolean visibleToPublic = false;
     private String gameName;
     private int gameId;
+    private String gamePath;
+    private String imagePath;
 
 
-    public Game(String name, String visibleToPublic ) {
+    public Game(String name, String visibleToPublic, String gamePath, String imagePath ) {
         this.gameName = name;
         if (visibleToPublic.equals("1")) {
             this.visibleToPublic = true;
         } else if (visibleToPublic.equals("0")) {
             this.visibleToPublic = false;
         }
+        this.gamePath = gamePath;
+        this.imagePath = imagePath;
     }
 
-    public Game(String gameId, String gameName, String visibleToPublic) {
+    public Game(String gameId, String gameName, String visibleToPublic, String gamePath, String imagePath) {
         this.gameId = Integer.valueOf(gameId);
         this.gameName = gameName;
         if (visibleToPublic.equals("1")) {
@@ -35,6 +39,8 @@ public class Game {
         } else if (visibleToPublic.equals("0")) {
             this.visibleToPublic = false;
         }
+        this.gamePath = gamePath;
+        this.imagePath = imagePath;
     }
 
     public void setGameVisibility(boolean visibleToPublic) {
@@ -52,28 +58,12 @@ public class Game {
     public boolean getGameVisibility() {
         return visibleToPublic;
     }
-
-    private String getGameName(int gameID) throws GameIDNotFoundException {
-        switch (gameID) {
-            case 1:
-                return "John Matanda Football '93";
-            case 2:
-                return "Markus of the Ninja";
-            case 3:
-                return "Rise of the Felix";
-            case 4:
-                return "South Park: The Nick of Truth";
-            case 5:
-                return "Elvir Legacy";
-            case 6:
-                return "Assassins Elvir 3";
-            case 7:
-                return "Cooking Matanda";
-            case 8:
-                return "Felix Wright";
-            default:
-                throw new GameIDNotFoundException(gameID);
-        }
+    
+    public String getGamePath(){
+        return this.gamePath;
     }
-
+    
+    public String getImagePath(){
+        return this.imagePath;
+    }
 }

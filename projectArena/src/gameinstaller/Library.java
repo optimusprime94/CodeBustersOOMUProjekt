@@ -8,24 +8,14 @@ package gameinstaller;
 import exceptions.GameIDNotFoundException;
 import java.io.FileNotFoundException;
 import java.sql.*;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  *
  * @author Nick
  */
 public class Library {
     private ArrayList<Game> gamesLibrary;
-    private int size;
-    private LibraryReader reader;
-    private LibraryWriter writer;
-    private int nextId = 0;
-    
+    private int size;   
     
     public Library(){
         gamesLibrary = new ArrayList<>();
@@ -42,6 +32,7 @@ public class Library {
             System.out.print(ex.getMessage());
         }
     }
+    
     public void updateLibrary() throws SQLException
     {
         size = 0;
@@ -54,11 +45,13 @@ public class Library {
             String id = resultSet.getString(1);
             String name = resultSet.getString(2);
             String visibility = resultSet.getString(3);
-            Game game = new Game(id, name, visibility);
+            String gamePath = resultSet.getString(4);
+            String imagePath = resultSet.getString(5);
+            Game game = new Game(id, name, visibility, gamePath, imagePath);
             gamesLibrary.add(game);
             size++;
         }
-  
+        connection.close();
     }
     
     public void installNewGame(Game newGame) throws SQLException
@@ -72,8 +65,10 @@ public class Library {
         {
             visibility = 1;
         }
-        String message = "insert into gameLibrary (gameName, visibility) VALUES ('"+gameName+"', "+visibility+");";
-        statement.executeUpdate(message);
+        String gamePath = newGame.getGamePath();
+        String imagePath = newGame.getImagePath();
+        String SQLMessage = "insert into gameLibrary (gameName, visibility, gamePath, imagePath) VALUES ('"+gameName+"', "+visibility+", '"+gamePath+"', '"+imagePath+"');";
+        statement.executeUpdate(SQLMessage);
         connection.close();
          try
         {
@@ -82,8 +77,7 @@ public class Library {
         catch (SQLException ex)
         {
             System.out.print(ex.getMessage());
-        }
-        
+        } 
     }
     
     public void deleteGame(Game gameToBeDeleted) throws SQLException{
@@ -91,8 +85,8 @@ public class Library {
         Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
         Statement statement = connection.createStatement();
         int id = gameToBeDeleted.getGameId();
-        String message = "delete from gameLibrary gameID = "+id+";";
-        statement.executeUpdate(message);
+        String SQLMessage = "delete from gameLibrary gameID = "+id+";";
+        statement.executeUpdate(SQLMessage);
         connection.close();
         try
         {
