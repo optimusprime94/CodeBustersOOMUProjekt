@@ -5,7 +5,9 @@
  */
 package controller;
 
-import view.ArenaFrame;
+import view.ArenaView;
+import view.userviews.OperatorView;
+import view.userviews.PlayerView;
 
 /**
  *
@@ -13,10 +15,10 @@ import view.ArenaFrame;
  */
 public class ArenaManager {
 
-    ArenaFrame frame;
+    ArenaView frame;
 
     public ArenaManager() {
-        frame = new ArenaFrame("username");
+        frame = new PlayerView("username");
 
     }
 
