@@ -5,6 +5,8 @@
  */
 package view.userviews;
 
+import gameinstaller.Game;
+import gameinstaller.Library;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -36,6 +38,7 @@ class GameLibraryView {
 
     private BorderPane arenaframe;
     private GridPane gamesgrid;
+    private Library gamelib;
     private ArrayList<String> gamelist;
     private ScrollPane scrollpane;
     private int width = 150, height = 250;
@@ -44,7 +47,7 @@ class GameLibraryView {
         this.scrollpane = new ScrollPane();
         this.arenaframe = arenaframe;
         this.gamesgrid = new GridPane();
-        this.gamelist = new ArrayList<>();
+        this.gamelib = new Library();
     }
 
     public void showGameLibrary() {
@@ -57,18 +60,9 @@ class GameLibraryView {
         /* rensar allt i gamesgrid och gamelist, innan spelen uppdateras. */
         gamesgrid.getChildren().clear();
         gamelist.clear();
+        gamelist = gamelib.getgameLibrary();
         /* lägg till spel efter här: */
 
-        gamelist.add("pacmanv3.png");
-        gamelist.add("assassinscreed2v3.png");
-        gamelist.add("assassinscreed2v3.png");
-        gamelist.add("assassinscreed2v3.png");
-        gamelist.add("assassinscreed2v3.png");
-        gamelist.add("assassinscreed2v3.png");
-        gamelist.add("assassinscreed2v3.png");
-        gamelist.add("assassinscreed2v3.png");
-        gamelist.add("assassinscreed2v3.png");
-        gamelist.add("assassinscreed2v3.png");
 
         Iterator it = gamelist.iterator(); // för att iterera genom spelen.
         int row = 0;
@@ -78,15 +72,13 @@ class GameLibraryView {
                 if (!it.hasNext()) {
                     break;
                 }
-
-                Image gameImg = new Image("image/icons/game_" + it.next(), 150, 250, false, false);
+                Game game = (Game) it.next();
+                Image gameImg = new Image("image/icons/game_" + game.getImagePath(), 150, 250, false, false);
                 ImageView gameView = new ImageView(gameImg);
                 gamesgrid.addRow(row, gameView);
 
                 Color color = colorHighlight(i);
 
-           
-                
                 gameView.setOnMouseEntered(e -> gameView.setEffect(new DropShadow(15, color)));
                 gameView.setOnMouseExited(e -> gameView.setEffect(new DropShadow(15, Color.TRANSPARENT)));
 
@@ -95,7 +87,7 @@ class GameLibraryView {
                         try {
                             ProcessBuilder pb = new ProcessBuilder("java", "-jar", "Othello.jar");
                             //C:\\Users\\elvir\\Documents\\NetBeansProjects\\
-                            pb.directory(new File("F:\\dokument\\NetBeansProjects\\CodeBustersOOMUProjekt\\projectArena\\src"));
+                            pb.directory(new File(game.getGamePath()));
                             Process p = pb.start();
 
                             //Process p2 = new ProcessBuilder("C:\\Users\\elvir\\Documents\\NetBeansProjects\\CodeBustersOOMUProjekt\\projectArena\\Grupp01Othello.jar").start();
