@@ -65,7 +65,7 @@ class GameLibraryView {
         gamelist = gamelib.getgameLibrary();
         /* lägg till spel efter här: */
 
-gamelist.add(new Game("Othello", "1", "src/gamelib","image/icons/game_othello.png"));
+//        gamelist.add(new Game("Othello", "1", "src/gamelib","image/icons/game_othello.png"));
         Iterator it = gamelist.iterator(); // för att iterera genom spelen.
         int row = 0;
         /* Itererar igenom alla spel och lägger till deras icon till vyn */
