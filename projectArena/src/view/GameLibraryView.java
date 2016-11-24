@@ -91,9 +91,9 @@ class GameLibraryView {
 
                 if (i == 0) {
                     gameView.setOnMouseClicked(e -> {
-                        try {
+                        try {                                                   
                             ProcessBuilder pb = new ProcessBuilder("java", "-jar", "Grupp01Othello.jar");
-                            pb.directory(new File("C:\\Users\\elvir\\Documents\\NetBeansProjects\\CodeBustersOOMUProjekt\\projectArena"));
+                            pb.directory(new File("C:\\Users\\elvir\\Documents\\NetBeansProjects\\CodeBustersOOMUProjekt\\projectArena")); //Viktigt! Ändra här för varje dator!
                             Process p = pb.start();
 
                             //Process p2 = new ProcessBuilder("C:\\Users\\elvir\\Documents\\NetBeansProjects\\CodeBustersOOMUProjekt\\projectArena\\Grupp01Othello.jar").start();
