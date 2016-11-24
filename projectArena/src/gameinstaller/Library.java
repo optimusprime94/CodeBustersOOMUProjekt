@@ -22,23 +22,14 @@ public class Library {
         size = 0;
     }
     public ArrayList getgameLibrary(){
+        this.updateLibrary();
         return this.gamesLibrary;
     }
-    
-    public void initializeLibrary() throws SQLException{
-        try
-        {
-            updateLibrary();
-        }
-        catch (SQLException ex)
-        {
-            System.out.print(ex.getMessage());
-        }
-    }
-    
-    public void updateLibrary() throws SQLException
+    public void updateLibrary() 
     {
         size = 0;
+        try
+        {
         Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
         Statement statement = connection.createStatement();
         String message= "select* from gameLibrary";
@@ -55,56 +46,16 @@ public class Library {
             size++;
         }
         connection.close();
-    }
-    
-    public void installNewGame(Game newGame) throws SQLException
-    {
-        Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
-        Statement statement = connection.createStatement();
-       
-        String gameName = newGame.getGameName();
-        int visibility =0;
-        if (newGame.getGameVisibility())
-        {
-            visibility = 1;
         }
-        String gamePath = newGame.getGamePath();
-        String imagePath = newGame.getImagePath();
-        String SQLMessage = "insert into gameLibrary (gameName, visibility, gamePath, imagePath) VALUES ('"+gameName+"', "+visibility+", '"+gamePath+"', '"+imagePath+"');";
-        statement.executeUpdate(SQLMessage);
-        connection.close();
-         try
-        {
-            updateLibrary();
-        }
-        catch (SQLException ex)
-        {
-            System.out.print(ex.getMessage());
-        } 
-    }
-    
-    public void deleteGame(int id) throws SQLException{
-        
-        Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
-        Statement statement = connection.createStatement();
-        String SQLMessage = "delete from gameLibrary where gameID = "+id+";";
-        statement.executeUpdate(SQLMessage);
-        connection.close();
-        try
-        {
-            updateLibrary();
-        }
-        catch (SQLException ex)
+        catch(Exception ex)
         {
             System.out.print(ex.getMessage());
         }
-    }
-      public void deleteGame(Game game) throws SQLException{
-        int gameID = game.getGameId();
-        deleteGame(gameID);
+               
     }
     public Game getGame(int id) throws GameIDNotFoundException
     {
+        this.updateLibrary();
         for(int i = 0; i < size; i ++)
         {
             if (gamesLibrary.get(i).getGameId() == id)

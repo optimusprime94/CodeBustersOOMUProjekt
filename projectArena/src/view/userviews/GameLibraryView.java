@@ -29,6 +29,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.paint.Color;
 import view.ArenaView;
+import view.InstallGameView;
 
 /**
  *
@@ -51,7 +52,8 @@ class GameLibraryView {
     }
 
     public void showGameLibrary() {
-
+         
+        
         /* gap: mellanrum mellan ikonerna (i pixlar), och padding är mellanrum runt gridens kanter.*/
         gamesgrid.setHgap(15);
         gamesgrid.setVgap(15);
@@ -59,7 +61,7 @@ class GameLibraryView {
 
         /* rensar allt i gamesgrid och gamelist, innan spelen uppdateras. */
         gamesgrid.getChildren().clear();
-        gamelist.clear();
+//        gamelist.clear();
         gamelist = gamelib.getgameLibrary();
         /* lägg till spel efter här: */
 

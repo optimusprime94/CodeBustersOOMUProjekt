@@ -18,7 +18,7 @@ public class ArenaManager {
     ArenaView frame;
 
     public ArenaManager() {
-        frame = new PlayerView("username");
+        frame = new OperatorView("username");
 
     }
 
