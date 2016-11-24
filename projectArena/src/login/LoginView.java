@@ -53,8 +53,7 @@ public class LoginView extends Application{
 //                                                                                                                                                                                                  gridPane.add(new Label("Welcome, brave warriors and foolish men, to a place where might rules supreme, a place where \n a man is judged not by his wealth, but by the man that lies dead at his feet.\n Prepare to prove yourself, prepare to fall, prepare to be hailed as a hero, prepare to be forgotten.\n But most importantly, prepare to:"), 1, 4);
                                                                                                                               
             
-            
-            
+           
 
             // Set properties for UI
             gridPane.setAlignment(Pos.CENTER);

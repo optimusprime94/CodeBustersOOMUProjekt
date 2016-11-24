@@ -19,7 +19,7 @@ public class PlayerView extends ArenaView {
 
     /* superclass referenser */
     private MenuBar menubar;
-
+    
     /* operator attribut */
     private Menu libraryMenu;
     private MenuItem shopItem, gamesItem;
