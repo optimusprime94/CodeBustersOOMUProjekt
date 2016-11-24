@@ -33,7 +33,7 @@ import view.InstallGameView;
 
 /**
  *
- * @author S143522 (Elvir Dzeko)..
+ * @author S143522 (Elvir Dzeko)
  */
 class GameLibraryView {
 
