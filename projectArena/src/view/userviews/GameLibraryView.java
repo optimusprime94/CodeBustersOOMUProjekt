@@ -33,14 +33,14 @@ import view.InstallGameView;
 
 /**
  *
- * @author S143522 (Elvir Dzeko)
+ * @author S143522 (Elvir Dzeko)..
  */
 class GameLibraryView {
 
     private BorderPane arenaframe;
     private GridPane gamesgrid;
     private Library gamelib;
-    private ArrayList<String> gamelist;
+    private ArrayList<Game> gamelist;
     private ScrollPane scrollpane;
     private int width = 150, height = 250;
 
@@ -65,7 +65,7 @@ class GameLibraryView {
         gamelist = gamelib.getgameLibrary();
         /* lägg till spel efter här: */
 
-
+gamelist.add(new Game("Othello", "1", "src/gamelib","image/icons/game_othello.png"));
         Iterator it = gamelist.iterator(); // för att iterera genom spelen.
         int row = 0;
         /* Itererar igenom alla spel och lägger till deras icon till vyn */
@@ -75,7 +75,7 @@ class GameLibraryView {
                     break;
                 }
                 Game game = (Game) it.next();
-                Image gameImg = new Image("image/icons/game_" + game.getImagePath(), 150, 250, false, false);
+                Image gameImg = new Image(game.getImagePath(), 150, 250, false, false);
                 ImageView gameView = new ImageView(gameImg);
                 gamesgrid.addRow(row, gameView);
 
@@ -84,11 +84,9 @@ class GameLibraryView {
                 gameView.setOnMouseEntered(e -> gameView.setEffect(new DropShadow(15, color)));
                 gameView.setOnMouseExited(e -> gameView.setEffect(new DropShadow(15, Color.TRANSPARENT)));
 
-                if (i == 0) {
                     gameView.setOnMouseClicked(e -> {
                         try {
                             ProcessBuilder pb = new ProcessBuilder("java", "-jar", "Othello.jar");
-                            //C:\\Users\\elvir\\Documents\\NetBeansProjects\\
                             pb.directory(new File(game.getGamePath()));
                             Process p = pb.start();
 
@@ -97,7 +95,6 @@ class GameLibraryView {
                             Logger.getLogger(ArenaView.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     });
-                }
             }
             row++;
         }
