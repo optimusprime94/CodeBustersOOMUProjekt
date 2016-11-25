@@ -25,10 +25,12 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import view.userviews.PlayerView;
 
+
 /**
  *
  * @author S153298
  */
+import view.CreateAccountView;
 public class LoginView {
 
     private TextField usernameField = new TextField();
@@ -43,7 +45,11 @@ public class LoginView {
         GridPane gridPane = new GridPane();
         gridPane.setHgap(5);
         gridPane.setVgap(5);
-        btSignUp.setOnMouseClicked(e -> System.out.println("You're signed up"));
+        btSignUp.setOnMouseClicked(e ->{ 
+               CreateAccountView creatAccount = new CreateAccountView();
+               creatAccount.show();
+               
+                       });
         gridPane.add(btSignUp, 3, 0);
         gridPane.add(new Label("Username"), 0, 0);
         gridPane.add(usernameField, 1, 0);
