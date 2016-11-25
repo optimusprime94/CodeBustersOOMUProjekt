@@ -6,6 +6,7 @@
 package login;
 
 import static java.lang.Integer.parseInt;
+import java.net.InetAddress;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -84,5 +85,22 @@ public class UserDatabase {
                 System.out.print(ex.getMessage());
         }
         return -1; 
+    }
+    public void newUser(String name, String password, int userType)
+    {
+        try
+        {
+            InetAddress adress = InetAddress.getLocalHost();
+            String ipAdress = adress.getHostAddress();
+            Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
+            Statement statement = connection.createStatement();
+            String message = "insert into arenaUser(userName, userPassword, userType, ipAdress) values('"+ name+"', '"+password+"', "+userType+", '" + ipAdress +"');";
+            statement.executeUpdate(message);
+        }
+        
+        catch(Exception ex)
+        {
+             System.out.print(ex.getMessage());   
+        }
     }
 }
