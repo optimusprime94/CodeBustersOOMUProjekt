@@ -22,6 +22,9 @@ public class Library {
         size = 0;
     }
     public ArrayList getgameLibrary(){
+        /* tömmer gamesLibrary innan den uppdateras med alla spel */
+        if(!gamesLibrary.isEmpty())
+            gamesLibrary.clear();
         this.updateLibrary();
         return this.gamesLibrary;
     }
