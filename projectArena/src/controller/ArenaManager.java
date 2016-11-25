@@ -8,6 +8,8 @@ package controller;
 import view.ArenaView;
 import view.userviews.OperatorView;
 import view.userviews.PlayerView;
+import login.LoginView;
+import view.StartView;
 
 /**
  *
@@ -15,15 +17,14 @@ import view.userviews.PlayerView;
  */
 public class ArenaManager {
 
-    ArenaView frame;
+    StartView frame;
 
-    public ArenaManager() {
-        frame = new PlayerView("username");
-
+    public ArenaManager() {   
+        frame = new LoginView();
     }
 
     public void run() {
-        frame.displayArena();
+        frame.displayStartView();
     }
 
 }

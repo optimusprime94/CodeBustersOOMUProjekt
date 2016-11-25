@@ -22,16 +22,15 @@ import javafx.stage.Stage;
  */
 public class StartView {
 
-    private BorderPane pane;
-    private Stage stage;
-    private Scene scene;
-    int height, width;
+    protected BorderPane pane;
+    protected Stage stage;
+    protected Scene scene;
+    int height = 600, width = 800;
     public StartView() {
-        height = 1000;
-        width = 1000;
+ 
         this.stage = new Stage();
         pane = new BorderPane();
-        this.scene = new Scene(pane, height, width);
+        this.scene = new Scene(pane, width, height);
 
     }
 

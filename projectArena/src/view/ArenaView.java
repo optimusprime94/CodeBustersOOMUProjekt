@@ -20,7 +20,7 @@ import javafx.stage.Stage;
  *
  * @author Elvir
  */
-public abstract class ArenaView {
+public abstract class ArenaView  {
 
     private Stage stage;
     private Scene scene;
