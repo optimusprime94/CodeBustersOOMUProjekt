@@ -27,9 +27,11 @@ public class AboutArenaView {
         String info = "Devoution and excellence,\n\n"
                 + "The foreground to developing the greatest to be, entertainment plattform.\n"
                 + "We want people to feel at home when they use our services, and provide what\n"
-                + "other companies apparently can't: Precision, Uniqueness, unambiguousness and quality.\n";
+                + "other companies apparently can't: Precision, Uniqueness, unambiguousness and quality.\n"
+                + "\nI like  buttered toast!";
         
         TextArea textarea = new TextArea(info);
+      //  textarea.getParent().setStyle("-fx-background-color: transparent;");
         textarea.setStyle("-fx-background-color: transparent;");
         textarea.setEditable(false);
                 textarea.setPrefRowCount(10);
