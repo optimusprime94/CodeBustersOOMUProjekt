@@ -5,9 +5,7 @@
  */
 package login;
 
-import java.io.FileNotFoundException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.geometry.HPos;
@@ -17,6 +15,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -51,7 +55,13 @@ public class LoginView extends Application{
             gridPane.add(passwordField, 1, 1);
             gridPane.add(btLogin, 1, 5);
 //                                                                                                                                                                                                  gridPane.add(new Label("Welcome, brave warriors and foolish men, to a place where might rules supreme, a place where \n a man is judged not by his wealth, but by the man that lies dead at his feet.\n Prepare to prove yourself, prepare to fall, prepare to be hailed as a hero, prepare to be forgotten.\n But most importantly, prepare to:"), 1, 4);
-                                                                                                                              
+                    Background background = new Background(new BackgroundImage(
+                new Image("image/lightTheme3.jpg"),
+                BackgroundRepeat.SPACE,
+                BackgroundRepeat.SPACE,
+                BackgroundPosition.CENTER,
+                BackgroundSize.DEFAULT));
+        gridPane.setBackground(background);                                                                                                                  
             
            
 
