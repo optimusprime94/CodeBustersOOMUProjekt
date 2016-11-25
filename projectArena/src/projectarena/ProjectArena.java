@@ -24,9 +24,9 @@ public class ProjectArena extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        ArenaManager arena = new ArenaManager();
+        ArenaManager arena = new ArenaManager(stage);
         
-        arena.run();
+      //  arena.run();
 
     }
 

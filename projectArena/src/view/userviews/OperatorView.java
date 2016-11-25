@@ -9,6 +9,7 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 import view.ArenaView;
 import view.HandleGameView;
 import view.InstallGameView;
@@ -28,8 +29,8 @@ public class OperatorView extends ArenaView{
     
     
     /* konstruktor: med användarnamn som parameter */
-    public OperatorView(String username) {
-        
+    public OperatorView(String username, Stage stage) {
+        super(stage);
         super.username = username;
         this.menubar = super.menubar;
         this.arenaframe = super.arenaframe;

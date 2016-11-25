@@ -6,13 +6,8 @@
 package login;
 
 import javafx.scene.control.Alert;
-import javafx.scene.image.Image;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.Pane;
+
+
 
 
 /**
@@ -21,13 +16,14 @@ import javafx.scene.layout.Pane;
  */
 public class Authentication{
 
-    public static void authenticateAccount(String username, String password){
+    public static boolean authenticateAccount(String username, String password){
         if(compare(username, password))
-            System.out.println("Yay");
+            return true;
         else{
             Alert alert = new Alert(Alert.AlertType.ERROR, "On the field of battle, there are no second chances");
             alert.setHeaderText("Invalid Username/Password");
             alert.showAndWait();
+            return false;
         }
     }
     

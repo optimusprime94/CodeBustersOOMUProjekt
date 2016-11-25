@@ -22,7 +22,7 @@ import javafx.stage.Stage;
  */
 public abstract class ArenaView {
 
-    private Stage stage;
+    protected Stage stage;
     private Scene scene;
 
     private VBox rightPanel;
@@ -36,9 +36,9 @@ public abstract class ArenaView {
     Menu homeMenu = new Menu("Home");
     Menu arenaMenu = new Menu("Arena");
 
-    public ArenaView() {
+    public ArenaView(Stage stage) {
         /* skapar stage och sätter stagens minsta möjliga storlek. */
-        this.stage = new Stage();
+        this.stage = stage;
         this.stage.setMinHeight(minHeight);
         this.stage.setMinWidth(minWidth);
 
