@@ -10,5 +10,7 @@ package arena.users;
  * @author S153298
  */
 public class LeagueOwner extends User{
-    
+    public  UserType getType(){
+        return UserType.LEAGUEOWNER;
+    }    
 }

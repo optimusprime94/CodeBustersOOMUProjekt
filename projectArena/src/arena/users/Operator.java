@@ -10,5 +10,7 @@ package arena.users;
  * @author S153298
  */
 public class Operator extends User{
-    
+    public  UserType getType(){
+        return UserType.OPERATOR;
+    }    
 }

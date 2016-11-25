@@ -12,6 +12,9 @@ package arena.users;
 public class Advertiser extends User{
     private double accountBalance;
     
+    public  UserType getType(){
+        return UserType.ADVERTISER;
+    }
 
     
 }

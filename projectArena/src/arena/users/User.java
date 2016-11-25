@@ -16,7 +16,6 @@ public abstract class User {
     public enum UserType{
         PLAYER, OPERATOR, ADVERTISER, LEAGUEOWNER
     }
-    
     public static User userFactory(UserType userType){
         switch (userType){
             case PLAYER: return new Player();
@@ -27,4 +26,5 @@ public abstract class User {
                 return null;
         }
     }
+    public abstract UserType getType();
 }
