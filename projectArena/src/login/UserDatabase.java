@@ -14,12 +14,20 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- *
+ * This class handles the communication between ARENA and the database in
+ * regards to user credentials
  * @author S153977
  */
+
 public class UserDatabase {
     private UserDatabase(){}
     
+    
+    /**
+     * This function takes a username, and return true if it exists in the database.
+     * @param name
+     * @return 
+     */
     public static boolean getUser(String name)
     {
         try
@@ -44,7 +52,12 @@ public class UserDatabase {
           
         return false;
     }
-   
+    /**
+     * This function takes a username, and returns the corresponding password
+     * from the database.
+     * @param name
+     * @return 
+     */
     public static String getPassword(String name)
     {
        String password = "";
@@ -66,6 +79,12 @@ public class UserDatabase {
         }
         return password; 
     }
+    /**
+     * this function takes a username, and returns the integer associated with
+     * its type
+     * @param name
+     * @return 
+     */
     public static int getUserType(String name)
     {
         try

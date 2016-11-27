@@ -87,14 +87,21 @@ public class LoginView {
         primaryStage.setScene(scene); // Place the scene in the stage
         primaryStage.show(); // Display the stage
     }
-
+/**
+ * This function activates upon clicking the login button, and takes the String 
+ * stored in the username/password fields and returns true if they are valid.
+ * @return 
+ */
     private boolean Authenticated() {
         // Get values from text fields
         this.username = usernameField.getText();
         String password = passwordField.getText();
         return Authentication.authenticateAccount(username, password);
     }
-
+/**
+ * This function switches the window from the login page to the ARENA main menu
+ * @param primaryStage 
+ */
     private void login(Stage primaryStage) {
         PlayerView view = new PlayerView(username, primaryStage);
         view.displayArena();

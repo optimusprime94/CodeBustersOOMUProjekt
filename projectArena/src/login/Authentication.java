@@ -15,7 +15,13 @@ import javafx.scene.control.Alert;
  * @author S153298
  */
 public class Authentication{
-
+/**
+ * Takes a username and password, if they are correct it returns true, or else
+ * it will display a message stating it was incorrect and return false.
+ * @param username
+ * @param password
+ * @return 
+ */
     public static boolean authenticateAccount(String username, String password){
         if(compare(username, password))
             return true;
@@ -26,7 +32,14 @@ public class Authentication{
             return false;
         }
     }
-    
+/**
+ * This function takes a username and a password, it then checks if the username 
+ * is in the database, if so it then checks if the entered password matches that
+ * of the username's password in the database. If so, return true, else false.
+ * @param username
+ * @param password
+ * @return 
+ */    
     private static boolean compare(String username, String password){
         if(UserDatabase.getUser(username)){
             if(password.equals(UserDatabase.getPassword(username))){
