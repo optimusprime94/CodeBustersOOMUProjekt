@@ -8,6 +8,7 @@ package controller;
 import javafx.stage.Stage;
 import login.LoginView;
 import view.ArenaView;
+import view.StartView;
 import view.userviews.OperatorView;
 import view.userviews.PlayerView;
 
@@ -17,16 +18,15 @@ import view.userviews.PlayerView;
  */
 public class ArenaManager {
 
-    ArenaView frame;
+    ArenaView start;
 
     public ArenaManager(Stage stage) {
-        LoginView login = new LoginView(stage);
-        //frame = new PlayerView("username");
+        start = new StartView(stage);
 
     }
 
     public void run() {
-       // frame.displayArena();
+        start.displayArena();
     }
 
 }
