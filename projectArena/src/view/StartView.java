@@ -5,51 +5,34 @@
  */
 package view;
 
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
+import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import login.LoginView;
 
 /**
  *
  * @author S143534
  */
-public class StartView {
+public class StartView extends ArenaView {
 
-    protected BorderPane pane;
-    protected Stage stage;
-    protected Scene scene;
-    int height = 600, width = 800;
-    public StartView() {
- 
-        this.stage = new Stage();
-        pane = new BorderPane();
-        this.scene = new Scene(pane, width, height);
+    protected BorderPane frame;
+    LoginView loginview;
 
+    public StartView(Stage stage) {
+        super(stage);
+        this.frame = super.arenaframe;
+
+        loginview = new LoginView(super.stage);
+        frame.setCenter(loginview.getLoginView());
+        setHomeButton();
     }
 
-    public void displayStartView(){
-        startDesign();
-        stage.setTitle("StartView");
-        stage.setScene(scene);
-        stage.show();
-    }
-  public void startDesign(){
-    
-            Background background = new Background(new BackgroundImage(
-                new Image("image/lightTheme3.jpg"),
-                BackgroundRepeat.SPACE,
-                BackgroundRepeat.SPACE,
-                BackgroundPosition.CENTER,
-                BackgroundSize.DEFAULT));
-        pane.setBackground(background);
 
+    private void setHomeButton() {
+        /* om det är startview som visas så ska hemknappen komma till login-sidan,
+           ifall man klickat på andra meny knappar. */
+        super.homeItem.setOnAction(e -> frame.setCenter(loginview.getLoginView()));
     }
 
 }

@@ -1,0 +1,59 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2016-nov-25, 19:44:20
+    Author     : optimusprime
+*/
+
+.root{
+    -fx-font-size: 12pt;
+    -fx-font-family: "sans-serif";
+    /*
+ 
+     -fx-background: transparent;
+     -fx-color: darkgrey;*/
+
+}
+
+.menu-item {
+
+}
+
+.menu-item:focused {
+    -fx-background-color: #969A9F;
+}
+
+.menu:hover {
+    -fx-background-color: transparent;
+}
+
+.menu {
+    -fx-background-color: transparent;
+}
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+
+/* Gör TextArea Transparent (måste göras på alla barn-noder också)*/
+.text-area {
+    -fx-background-color: rgba(190,190,190, 0.3);
+}
+
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
+
+.text-area .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+
+

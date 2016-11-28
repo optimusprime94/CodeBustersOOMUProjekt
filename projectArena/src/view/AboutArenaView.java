@@ -31,8 +31,6 @@ public class AboutArenaView {
                 + "\nI like  buttered toast!";
         
         TextArea textarea = new TextArea(info);
-      //  textarea.getParent().setStyle("-fx-background-color: transparent;");
-        textarea.setStyle("-fx-background-color: transparent;");
         textarea.setEditable(false);
                 textarea.setPrefRowCount(10);
         textarea.setPrefColumnCount(100);

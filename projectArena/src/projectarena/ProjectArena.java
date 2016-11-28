@@ -26,7 +26,7 @@ public class ProjectArena extends Application {
     public void start(Stage stage) throws Exception {
         ArenaManager arena = new ArenaManager(stage);
         
-      //  arena.run();
+        arena.run();
 
     }
 

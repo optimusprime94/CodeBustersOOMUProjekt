@@ -12,6 +12,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -20,21 +21,24 @@ import javafx.stage.Stage;
  *
  * @author Elvir
  */
-public abstract class ArenaView  {
+public abstract class ArenaView {
 
     protected Stage stage;
     private Scene scene;
-
     private VBox rightPanel;
+    Menu userAccountMenu = new Menu("Account");
+    Menu homeMenu = new Menu("Home");
+    Menu arenaMenu = new Menu("Arena");
 
     /* attributer som subklasserna skall kunna komma åt och/ eller ändra. */
     protected BorderPane arenaframe;
     protected MenuBar menubar;
     protected String username;
     protected int minWidth = 800, minHeight = 600;
-    Menu userAccountMenu = new Menu("Account");
-    Menu homeMenu = new Menu("Home");
-    Menu arenaMenu = new Menu("Arena");
+    /* MenuItems som skall följa med alla som ärver från arenaview */
+    protected MenuItem homeItem = new MenuItem("Go to home");
+    protected MenuItem aboutUsItem = new MenuItem("About us");
+    protected MenuItem aboutArenaItem = new MenuItem("About Arena");
 
     public ArenaView(Stage stage) {
         /* skapar stage och sätter stagens minsta möjliga storlek. */
@@ -46,13 +50,13 @@ public abstract class ArenaView  {
         scene = new Scene(arenaframe, minWidth, minHeight);
         menubar = new MenuBar();
 
-
         AdvertisementView adView = new AdvertisementView(arenaframe);
         adView.setAdvertisement("image/ad_arena.png"); // sätter reklambilden
 
         /* används så att användarens namn visas */
         rightPanel = new VBox();
         this.username = username;
+        actions();
     }
 
     public void displayArena() {
@@ -67,12 +71,13 @@ public abstract class ArenaView  {
 
     private void arenaStyle() {
 
+        scene.getStylesheets().add("view/arenastylesheet.css");
         Background background = new Background(new BackgroundImage(
                 new Image("image/lightTheme3.jpg"),
                 BackgroundRepeat.SPACE,
                 BackgroundRepeat.SPACE,
                 BackgroundPosition.CENTER,
-                BackgroundSize.DEFAULT));
+                new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true)));
         arenaframe.setBackground(background);
 
     }
@@ -88,22 +93,9 @@ public abstract class ArenaView  {
                 + "-fx-effect: dropshadow(gaussian, Black, 50, 0, 0, 0);"
                 + "-fx-background-insets: 50;");
 
-
-
-
         /* skapar och sätter in items i homeMenu. */
-        MenuItem homeItem = new MenuItem("Go to home");
         homeMenu.getItems().addAll(homeItem);
-
-        MenuItem aboutUsItem = new MenuItem("About us");
-
-        MenuItem aboutArenaItem = new MenuItem("About Arena");
         arenaMenu.getItems().addAll(aboutUsItem, aboutArenaItem);
-        aboutArenaItem.setOnAction(e -> new AboutArenaView(arenaframe));
-
-
-        homeItem.setOnAction(event -> System.out.println("Welcome home!"));
-
         menubar.getMenus().addAll(homeMenu, userAccountMenu, arenaMenu);
     }
 
@@ -120,5 +112,18 @@ public abstract class ArenaView  {
         rightPanel.getChildren().add(user);
         // arenaframe.setRight(rightPanel);
 
+    }
+
+    private void actions() {
+        aboutArenaItem.setOnAction(e -> new AboutArenaView(arenaframe));
+        homeItem.setOnAction(event -> {
+
+            ImageView iv = new ImageView(new Image("image/romanbattle.png"));
+                        Pane pane = new Pane(iv);
+            iv.fitWidthProperty().bindBidirectional(pane.layoutXProperty());
+            iv.fitHeightProperty().bindBidirectional(pane.layoutYProperty());
+            arenaframe.setCenter(iv);
+                    
+                });
     }
 }
