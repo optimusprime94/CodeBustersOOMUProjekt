@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gameinstaller;
+package model.administration;
 
-import exceptions.GameIDNotFoundException;
+import model.exceptions.GameIDNotFoundException;
 import java.io.FileNotFoundException;
 import java.sql.*;
 import java.util.ArrayList;

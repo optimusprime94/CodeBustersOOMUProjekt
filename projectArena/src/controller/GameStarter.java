@@ -5,7 +5,7 @@
  */
 package controller;
 
-import gameinstaller.Game;
+import model.administration.Game;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;

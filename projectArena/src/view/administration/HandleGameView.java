@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package view.administration;
 
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;

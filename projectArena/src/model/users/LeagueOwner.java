@@ -3,14 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package arena.users;
+package model.users;
 
 /**
  *
  * @author S153298
  */
-public class Operator extends User{
+public class LeagueOwner extends User{
     public  UserType getType(){
-        return UserType.OPERATOR;
+     /**
+     * This function will return the userType for this class.
+     * @return 
+     */
+        return UserType.LEAGUEOWNER;
     }    
 }

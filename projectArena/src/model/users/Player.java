@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package arena.users;
+package model.users;
 
 /**
  *
  * @author S153298
  */
-public class Advertiser extends User{
-    private double accountBalance;
-    
+public class Player extends User{
+     /**
+     * This function will return the userType for this class.
+     * @return 
+     */
     public  UserType getType(){
-        return UserType.ADVERTISER;
+        return UserType.PLAYER;
     }
-
-    
 }

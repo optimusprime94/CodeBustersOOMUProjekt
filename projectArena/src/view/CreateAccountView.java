@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import login.UserDatabase;
+import model.general.login.UserDatabase;
 
 
 /**

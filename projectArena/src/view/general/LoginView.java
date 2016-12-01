@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package login;
+package view.general;
 
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
@@ -15,6 +15,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import model.general.login.Authentication;
 import view.userviews.PlayerView;
 
 

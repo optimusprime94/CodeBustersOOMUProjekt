@@ -11,8 +11,8 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import view.ArenaView;
-import view.HandleGameView;
-import view.InstallGameView;
+import view.administration.HandleGameView;
+import view.administration.InstallGameView;
 
 /**
  *

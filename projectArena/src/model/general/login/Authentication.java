@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package login;
+package model.general.login;
 
 import javafx.scene.control.Alert;
 

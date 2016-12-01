@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package view.administration;
 
 /**
  *
@@ -18,8 +18,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import gameinstaller.HandleGame;
-import gameinstaller.Game;
+import model.administration.HandleGame;
+import model.administration.Game;
 
 /**
  *

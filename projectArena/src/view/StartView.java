@@ -8,7 +8,7 @@ package view;
 import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import login.LoginView;
+import view.general.LoginView;
 
 /**
  *

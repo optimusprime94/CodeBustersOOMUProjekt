@@ -5,8 +5,8 @@
  */
 package view.userviews;
 
-import gameinstaller.Game;
-import gameinstaller.Library;
+import model.administration.Game;
+import model.administration.Library;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.paint.Color;
 import view.ArenaView;
-import view.InstallGameView;
+import view.administration.InstallGameView;
 
 /**
  *
