@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import model.general.login.Authentication;
@@ -61,14 +62,21 @@ public class LoginView {
         GridPane.setHalignment(btLogin, HPos.RIGHT);
 
         // Process events
+        gridPane.setOnKeyPressed(e -> {
+            if(e.getCode() == KeyCode.ENTER){
+                if (Authenticated()) {
+                    System.out.print(username);
+                    login(primaryStage);
+                }
+            }
+        });
         btLogin.setOnAction(e -> {
 
             if (Authenticated()) {
                 System.out.print(username);
                 login(primaryStage);
             }
-        });
-
+        });  
     }
 /**
  * This function activates upon clicking the login button, and takes the String 
