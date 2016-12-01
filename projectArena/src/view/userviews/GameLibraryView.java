@@ -5,31 +5,20 @@
  */
 package view.userviews;
 
+import controller.GameStarter;
 import model.administration.Game;
 import model.administration.Library;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
-import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
-import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.SelectionMode;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.paint.Color;
-import view.ArenaView;
-import view.administration.InstallGameView;
+
 
 /**
  *
@@ -40,7 +29,6 @@ class GameLibraryView {
     private BorderPane arenaframe;
     private GridPane gamesgrid;
     private Library gamelib;
-    private ArrayList<Game> gamelist;
     private ScrollPane scrollpane;
     private int width = 150, height = 250;
 
@@ -53,7 +41,7 @@ class GameLibraryView {
 
     public void showGameLibrary() {
          
-        
+        ArrayList<Game> gamelist = new ArrayList<>();
         /* gap: mellanrum mellan ikonerna (i pixlar), och padding är mellanrum runt gridens kanter.*/
         gamesgrid.setHgap(15);
         gamesgrid.setVgap(15);
@@ -84,18 +72,8 @@ class GameLibraryView {
                 gameView.setOnMouseEntered(e -> gameView.setEffect(new DropShadow(15, color)));
                 gameView.setOnMouseExited(e -> gameView.setEffect(new DropShadow(15, Color.TRANSPARENT)));
 
-                    gameView.setOnMouseClicked(e -> {
-                        try {
-                            ProcessBuilder pb = new ProcessBuilder("java", "-jar", "Othello.jar");
-                            pb.directory(new File(game.getGamePath()));
-                            Process p = pb.start();
-
-                            //Process p2 = new ProcessBuilder("C:\\Users\\elvir\\Documents\\NetBeansProjects\\CodeBustersOOMUProjekt\\projectArena\\Grupp01Othello.jar").start();
-                        } catch (IOException ex) {
-                            Logger.getLogger(ArenaView.class.getName()).log(Level.SEVERE, null, ex);
+                    gameView.setOnMouseClicked(e -> new GameStarter(game));
                         }
-                    });
-            }
             row++;
         }
         setupScrollbar();
