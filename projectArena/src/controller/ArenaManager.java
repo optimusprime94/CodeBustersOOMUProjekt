@@ -6,11 +6,8 @@
 package controller;
 
 import javafx.stage.Stage;
-import view.general.LoginView;
 import view.ArenaView;
 import view.StartView;
-import view.userviews.OperatorView;
-import view.userviews.PlayerView;
 
 /**
  *

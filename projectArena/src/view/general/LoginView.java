@@ -8,7 +8,6 @@ package view.general;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -24,7 +23,6 @@ import view.userviews.PlayerView;
  * @author S153298
  */
 import view.CreateAccountView;
-import view.StartView;
 
 
 public class LoginView {
