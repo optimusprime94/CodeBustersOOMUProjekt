@@ -18,7 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-
+import model.play.Match;
 
 /**
  *
@@ -40,7 +40,7 @@ class GameLibraryView {
     }
 
     public void showGameLibrary() {
-         
+
         ArrayList<Game> gamelist = new ArrayList<>();
         /* gap: mellanrum mellan ikonerna (i pixlar), och padding är mellanrum runt gridens kanter.*/
         gamesgrid.setHgap(15);
@@ -72,8 +72,11 @@ class GameLibraryView {
                 gameView.setOnMouseEntered(e -> gameView.setEffect(new DropShadow(15, color)));
                 gameView.setOnMouseExited(e -> gameView.setEffect(new DropShadow(15, Color.TRANSPARENT)));
 
-                    gameView.setOnMouseClicked(e -> new GameStarter(game));
-                        }
+                gameView.setOnMouseClicked(e -> {
+                    new Match(game);
+                });
+
+            }
             row++;
         }
         setupScrollbar();
@@ -83,15 +86,19 @@ class GameLibraryView {
         scrollpane.setContent(gamesgrid);
         arenaframe.setCenter(scrollpane);
     }
-    
-    
-    private Color colorHighlight(int number){
-        switch(number){
-            case 0: return Color.DIMGREY;
-            case 1: return Color.DIMGREY;
-            case 2: return Color.DIMGREY;
-            case 3: return Color.DIMGREY;
-            default: return Color.WHITE;
+
+    private Color colorHighlight(int number) {
+        switch (number) {
+            case 0:
+                return Color.DIMGREY;
+            case 1:
+                return Color.DIMGREY;
+            case 2:
+                return Color.DIMGREY;
+            case 3:
+                return Color.DIMGREY;
+            default:
+                return Color.WHITE;
         }
     }
 }

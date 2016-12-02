@@ -5,8 +5,10 @@
  */
 package model.play;
 
+import controller.GameStarter;
 import model.users.Player;
 import java.util.Random;
+import model.administration.Game;
 
 
 /**
@@ -14,25 +16,54 @@ import java.util.Random;
  * @author S143534
  */
 public class Match {
-
-    Player[] players;
+    Player player,player1,player2;
+    private final Game game;
     int playerID;
     int matchID;
-    Match match;
+    private Match match;
 
-    public Match() {
-        players = null;
+    public Match(Game game) {
+        this.game = game;
+        player1 = new Player();
+        Play();
     }
-
+    public Match(Game game, Player player1,Player player2){
+        this.game = game;
+        this.player1 = player1;
+        this.player2 = player2;
+        Play();
+        
+    }
+    /**
+    * setMatchID sets the ID of the game  
+    * 
+     */
     public void setMatchID(int matchID) {
         this.matchID = matchID;
-        System.out.println("");
+        System.out.println(""+matchID);
     }
 
     public int getMatchID() {
         return matchID;
     }
+   protected void initiziateMatch(Player player1,Player player2){
+       
+       matchID = 1;
+       setMatchID(matchID);
+       System.out.println("player1: "+player1);
+       System.out.println("player1: "+player2); 
+       
 
+    
+    }
+   public void Play(){
+   initiziateMatch(player1,player2);
+   new GameStarter(game);
+   }
+   public void getWinner(Player player1){
+       System.out.println("winner is: "+player1);
+       
+}
 
 
 }

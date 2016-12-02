@@ -17,7 +17,6 @@ import view.ArenaView;
  * @author S143522 (Elvir Dzeko) Shut up we all contributed
  */
 public class GameStarter {
-
     private Game game;
     
     public GameStarter(Game game) {
