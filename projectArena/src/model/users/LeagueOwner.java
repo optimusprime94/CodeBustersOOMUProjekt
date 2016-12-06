@@ -10,6 +10,15 @@ package model.users;
  * @author S153298
  */
 public class LeagueOwner extends User{
+    
+    private String namen;
+    private int leagueOwnerID;
+       public LeagueOwner(String name, int leagueOwnerID)
+    {
+        this.namen = name;
+        this.leagueOwnerID = leagueOwnerID;
+    }
+ 
     public  UserType getType(){
      /**
      * This function will return the userType for this class.
