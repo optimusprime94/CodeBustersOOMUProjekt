@@ -13,7 +13,8 @@ import model.users.Player;
  *
  * @author S153977
  */
-public class EleminationTournament extends Tournament {
+public class EleminationTournament extends Tournament 
+{
     
     private EleminationScheme scheme;
     private Score score;
@@ -30,7 +31,7 @@ public class EleminationTournament extends Tournament {
     @Override
     public void conductTournament()
     {
-        if (this.maxNumberOfPlayers == this.numberOFPlayers)
+        if (this.maxNumberOfPlayers == this.numberOfPlayers)
         {
             while (scheme.matchesExists())
             {

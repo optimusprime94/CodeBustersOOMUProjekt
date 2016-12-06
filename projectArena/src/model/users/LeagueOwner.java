@@ -13,10 +13,9 @@ public class LeagueOwner extends User{
     
     private String namen;
     private int leagueOwnerID;
-       public LeagueOwner(String name, int leagueOwnerID)
+       public LeagueOwner()
     {
-        this.namen = name;
-        this.leagueOwnerID = leagueOwnerID;
+
     }
  
     public  UserType getType(){
