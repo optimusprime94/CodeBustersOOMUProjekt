@@ -13,7 +13,7 @@ public class LeagueOwner extends User{
     
     private String namen;
     private int leagueOwnerID;
-       public LeagueOwner()
+    public LeagueOwner()
     {
 
     }
