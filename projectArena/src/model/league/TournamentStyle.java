@@ -13,6 +13,7 @@ import model.users.Player;
  * @author S153977
  */
 public abstract class TournamentStyle {
+    
     protected int numberOfPlayers;
     protected int maxNumberOfPlayers;
     protected Player [] players;
@@ -24,7 +25,7 @@ public abstract class TournamentStyle {
     }
     public Player getWinner()
     {
-        return (new Player());
+        return (new Player()); //????
     }
     public boolean applyForTournament(Player player)
     {
@@ -39,6 +40,7 @@ public abstract class TournamentStyle {
     {
         this.advertisment = advertisment;
     }
+    
     public abstract void conductTournament();
     
    
