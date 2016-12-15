@@ -27,6 +27,7 @@ import view.userviews.PlayerView;
  */
 import view.CreateAccountView;
 import view.userviews.AdvertiserView;
+import view.userviews.LeagueOwnerView;
 import view.userviews.OperatorView;
 
 
@@ -104,8 +105,11 @@ public class LoginView {
             case 1: PlayerView view = new PlayerView(username, primaryStage);
                 view.displayArena();
                 break;
-            case 2: ArenaView arenaview = new OperatorView(username, primaryStage);
-                arenaview.displayArena();
+            case 2: ArenaView oView = new OperatorView(username, primaryStage);
+                oView.displayArena();
+                break;
+            case 3: ArenaView lView = new LeagueOwnerView(username, primaryStage);
+                lView.displayArena();
                 break;
         }
         
