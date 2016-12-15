@@ -16,6 +16,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import model.general.login.Authentication;
+import model.general.login.UserDatabase;
+import view.ArenaView;
 import view.userviews.PlayerView;
 
 
@@ -24,6 +26,8 @@ import view.userviews.PlayerView;
  * @author S153298
  */
 import view.CreateAccountView;
+import view.userviews.AdvertiserView;
+import view.userviews.OperatorView;
 
 
 public class LoginView {
@@ -95,8 +99,16 @@ public class LoginView {
  * @param primaryStage 
  */
     private void login(Stage primaryStage) {
-        PlayerView view = new PlayerView(username, primaryStage);
-        view.displayArena();
+        
+        switch(UserDatabase.getUserType(username)){
+            case 1: PlayerView view = new PlayerView(username, primaryStage);
+                view.displayArena();
+                break;
+            case 2: ArenaView arenaview = new OperatorView(username, primaryStage);
+                arenaview.displayArena();
+                break;
+        }
+        
     }
     
     public Node getLoginView(){
