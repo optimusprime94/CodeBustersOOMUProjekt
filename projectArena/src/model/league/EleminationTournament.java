@@ -32,21 +32,15 @@ public class EleminationTournament extends TournamentStyle {
     {
         if (this.maxNumberOfPlayers == this.numberOfPlayers)
         {
+            scheme.addPlayers(players);
             while (scheme.matchesExists())
             {
                 Player[] nextPlayers = scheme.getNextPlayers();
                 Match match = new Match(game, nextPlayers[0], nextPlayers[1]);
                 System.out.print("");
-                notifyGameReady(nextPlayers[0], match);
-                notifyGameReady(nextPlayers[1], match);
-                
+                //notifyGameReady(nextPlayers[0], match);
+                //notifyGameReady(nextPlayers[1], match);
             }
         }
-    }
-    public void notifyGameReady(Player player, Match match)
-    {
-        
-    }
-    
-    
+    }    
 }

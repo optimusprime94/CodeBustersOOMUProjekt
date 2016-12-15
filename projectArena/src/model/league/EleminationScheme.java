@@ -16,7 +16,6 @@ public class EleminationScheme {
     
     public EleminationScheme()
     {
-      
         this.queue = new LinkedList<Player>();
     }
     public Player[] getNextPlayers()
@@ -37,5 +36,12 @@ public class EleminationScheme {
     public void update(Player winner)
     {
         queue.add(winner);
-    }       
+    }
+    public void addPlayers(Player players[])
+    {
+        for (int i=0; i < players.length; i++)
+        {
+            queue.add(players[i]);
+        }
+    }
 }
