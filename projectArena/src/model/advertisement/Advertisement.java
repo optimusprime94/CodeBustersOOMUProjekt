@@ -12,13 +12,28 @@ import java.util.Date;
  *
  * @author S153298
  */
-public class Advertisement {
-    private Date date;
-    private Time time;
+public class Advertisement 
+{
+    private String filePath;
+    private String time;
+    private String url;
     
-    
-    static void getDate(){
-        System.out.println(new Date());
+    public Advertisement(String filePath, String time, String url)
+    {
+        this.filePath = filePath;
+        this.time = time;
+        this.url = url;
     }
-    
+    public String getFilePath()
+    {
+        return(filePath);
+    }
+    public String getTime()
+    {
+        return(time);
+    }
+    public String getUrl()
+    {
+        return(url);
+    }
 }

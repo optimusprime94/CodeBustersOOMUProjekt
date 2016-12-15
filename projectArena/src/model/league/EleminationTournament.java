@@ -13,7 +13,8 @@ import model.users.Player;
  *
  * @author S153977
  */
-public class EleminationTournament extends TournamentStyle {
+public class EleminationTournament extends TournamentStyle 
+{
     
     private EleminationScheme scheme;
     private Score score;

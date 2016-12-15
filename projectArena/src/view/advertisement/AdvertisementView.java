@@ -8,6 +8,7 @@ package view.advertisement;
 import java.awt.Desktop;
 import java.net.URI;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Timer;
 import java.util.logging.Level;
@@ -24,6 +25,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import model.advertisement.Advertisement;
+import model.advertisement.getAdvertisment;
 
 /**
  *
@@ -39,11 +42,15 @@ public class AdvertisementView {
     private String[] filepaths = {"image/VisitorAd.gif", "image/darkgrey.jpg", "image/gladiator.jpg", "image/lightTheme1.jpg"};
     private int[] times = {5000,9000,3000,7000};
     private int filepath = 0;
+    private ArrayList<Advertisement> adverts;
 
     
     public AdvertisementView(BorderPane arenaframe) {
         this.arenaframe = arenaframe;
         advertPane = new StackPane();
+        getAdvertisment getAds = new getAdvertisment();
+        this.adverts = getAds.getAdverts();
+        
     }
 
     private void showAdvertisement() {
