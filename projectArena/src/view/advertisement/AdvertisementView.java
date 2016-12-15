@@ -59,13 +59,13 @@ public class AdvertisementView {
         adView.xProperty().bindBidirectional(arenaframe.layoutXProperty()); // binder den till arenaframens bredd.
         arenaframe.setBottom(advertPane);
         new RunAdScheme();                                                      // Bug, process does not end upon exit
-/*
-        adView.setOnMouseClicked(e -> {
+
+        advertPane.setOnMouseClicked(e -> {
             
             try {
-                filepath = filepath % 2;
+                //filepath = filepath % 2;
                 //System.out.println(filepath);
-                switchAd(filepaths[filepath++]);
+                //switchAd(filepaths[filepath++]);
                 //System.out.println(filepath);
                 
                 System.out.print("ad clicked!");
@@ -78,7 +78,7 @@ public class AdvertisementView {
             }
 
             
-        });*/
+        });
     }
 
     public void setAdvertisement(String newAdvert) {
