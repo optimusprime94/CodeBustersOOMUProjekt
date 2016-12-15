@@ -28,8 +28,8 @@ public class GetTournaments {
             while (resultSet.next())
             {
                 String name = resultSet.getString(2);
-                String visibility = resultSet.getString(3);
-                if (visibility == "1")
+                int visibility = Integer.parseInt(resultSet.getString(3));
+                if (visibility == 1)
                 {
                     tournaments.add(name);
                 }    
