@@ -53,7 +53,6 @@ public class LoginView {
         gridPane.add(new Label("Password:"), 0, 1);
         gridPane.add(passwordField, 1, 1);
         gridPane.add(btLogin, 1, 5);
-                                                                                                                                                                                                  gridPane.add(new Label("Welcome, brave warriors and foolish men,\n to a place where might rules supreme, \n a place where a man is judged not by his wealth,\n but by the man that lies dead at his feet.\n Prepare to prove yourself, prepare to fall,\n prepare to be hailed as a hero, prepare to be forgotten.\n But most importantly, prepare to:"), 1, 4);
 
 
         // Set properties for UI

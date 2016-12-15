@@ -41,7 +41,7 @@ public class AdvertisementView {
     private Image adImage;
     private String[] filepaths = {"image/VisitorAd.gif", "image/darkgrey.jpg", "image/gladiator.jpg", "image/lightTheme1.jpg"};
     private int[] times = {5000,9000,3000,7000};
-    private int filepath = 0;
+    private int adIndex = 0;
     private ArrayList<Advertisement> adverts;
 
     
@@ -77,7 +77,7 @@ public class AdvertisementView {
                 
                 System.out.print("ad clicked!");
                 Desktop desktop = java.awt.Desktop.getDesktop();
-                URI advertisementURI = new URI("http://youtube.com/");
+                URI advertisementURI = new URI(adverts.get(adIndex).getUrl());
                 desktop.browse(advertisementURI);
             
             } catch (Exception ex) {
@@ -94,7 +94,7 @@ public class AdvertisementView {
     }
     
     public void switchAd(String newAd){
-        filepath = filepath % filepaths.length;
+        
         advertPane.getChildren().removeAll();
         this.advertisementFile = newAd;
         adImage = new Image(advertisementFile, arenaframe.widthProperty().doubleValue() - 20, 80, false, false);
@@ -110,8 +110,9 @@ public class AdvertisementView {
                 try {
                     while (true) {
                         //switchAd(filepaths[filepath++]);
-                        Platform.runLater(() -> switchAd(filepaths[filepath++])); // lambda expression
-                        Thread.sleep((times[filepath]));
+                        adIndex = (adIndex + 1) % adverts.size();
+                        Platform.runLater(() -> switchAd(adverts.get(adIndex).getFilePath())); // lambda expression
+                        Thread.sleep(Integer.parseInt(adverts.get(adIndex).getTime()));
                     }
                 }
                 catch (InterruptedException ex) {
