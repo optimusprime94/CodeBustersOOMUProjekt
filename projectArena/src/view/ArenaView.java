@@ -40,6 +40,10 @@ public abstract class ArenaView {
     protected MenuItem homeItem = new MenuItem("Go to home");
     protected MenuItem aboutUsItem = new MenuItem("About us");
     protected MenuItem aboutArenaItem = new MenuItem("About Arena");
+    
+    
+    
+    AdvertisementView adView;                                                   //Ändrad
 
     public ArenaView(Stage stage) {
         /* skapar stage och sätter stagens minsta möjliga storlek. */
@@ -51,7 +55,7 @@ public abstract class ArenaView {
         scene = new Scene(arenaframe, minWidth, minHeight);
         menubar = new MenuBar();
 
-        AdvertisementView adView = new AdvertisementView(arenaframe);
+        adView = new AdvertisementView(arenaframe);                             //Ändrad
         adView.setAdvertisement("image/ad_arena.png"); // sätter reklambilden
 
         /* används så att användarens namn visas */
@@ -125,6 +129,6 @@ public abstract class ArenaView {
             iv.fitHeightProperty().bindBidirectional(pane.layoutYProperty());
             arenaframe.setCenter(iv);
                     
-                });
+        });
     }
 }

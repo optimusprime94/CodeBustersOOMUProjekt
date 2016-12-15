@@ -8,14 +8,22 @@ package view.advertisement;
 import java.awt.Desktop;
 import java.net.URI;
 import java.net.URL;
+import java.util.Date;
+import java.util.Timer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.application.Application;
+import static javafx.application.Application.launch;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 /**
  *
@@ -26,15 +34,21 @@ public class AdvertisementView {
     private String advertisementFile;
     private BorderPane arenaframe; //referens till arenas huvud frame.
     private StackPane advertPane;
+    private ImageView adView;
+    private Image adImage;
+    private String[] filepaths = {"image/VisitorAd.gif", "image/darkgrey.jpg", "image/gladiator.jpg", "image/lightTheme1.jpg"};
+    private int[] times = {5000,9000,3000,7000};
+    private int filepath = 0;
 
+    
     public AdvertisementView(BorderPane arenaframe) {
         this.arenaframe = arenaframe;
         advertPane = new StackPane();
     }
 
     private void showAdvertisement() {
-        Image adImage = new Image(advertisementFile, arenaframe.widthProperty().doubleValue() - 20, 80, false, false);
-        ImageView adView = new ImageView(adImage);
+        adImage = new Image(advertisementFile, arenaframe.widthProperty().doubleValue() - 20, 80, false, false);
+        adView = new ImageView(adImage);
         
         adView.setFitWidth(arenaframe.widthProperty().subtract(50).doubleValue());
         adView.setFitHeight(80);
@@ -44,24 +58,59 @@ public class AdvertisementView {
         advertPane.setPadding(new Insets(10,10,10,10));
         adView.xProperty().bindBidirectional(arenaframe.layoutXProperty()); // binder den till arenaframens bredd.
         arenaframe.setBottom(advertPane);
-
+        new RunAdScheme();                                                      // Bug, process does not end upon exit
+/*
         adView.setOnMouseClicked(e -> {
+            
             try {
+                filepath = filepath % 2;
+                //System.out.println(filepath);
+                switchAd(filepaths[filepath++]);
+                //System.out.println(filepath);
+                
                 System.out.print("ad clicked!");
                 Desktop desktop = java.awt.Desktop.getDesktop();
                 URI advertisementURI = new URI("http://youtube.com/");
                 desktop.browse(advertisementURI);
+            
             } catch (Exception ex) {
                 Logger.getLogger(AdvertisementView.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-        });
+            
+        });*/
     }
 
     public void setAdvertisement(String newAdvert) {
         this.advertisementFile = newAdvert;
         showAdvertisement();
+    }
+    
+    public void switchAd(String newAd){
+        filepath = filepath % filepaths.length;
+        advertPane.getChildren().removeAll();
+        this.advertisementFile = newAd;
+        adImage = new Image(advertisementFile, arenaframe.widthProperty().doubleValue() - 20, 80, false, false);
+        adView = new ImageView(adImage);        
+        advertPane.getChildren().add(adView);
 
     }
 
+
+    public class RunAdScheme {
+        public RunAdScheme() {
+            new Thread(() -> { // lambda expression
+                try {
+                    while (true) {
+                        //switchAd(filepaths[filepath++]);
+                        Platform.runLater(() -> switchAd(filepaths[filepath++])); // lambda expression
+                        Thread.sleep((times[filepath]));
+                    }
+                }
+                catch (InterruptedException ex) {
+                }
+            }).start();
+        }
+    }
 }
+    
