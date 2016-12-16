@@ -71,7 +71,7 @@ public class LoginView {
         gridPane.setOnKeyPressed(e -> {
             if(e.getCode() == KeyCode.ENTER){
                 if (Authenticated()) {
-                    System.out.print(username);
+                    System.out.println(username);
                     login(primaryStage);
                 }
             }
@@ -79,7 +79,7 @@ public class LoginView {
         btLogin.setOnAction(e -> {
 
             if (Authenticated()) {
-                System.out.print(username);
+                System.out.println(username);
                 login(primaryStage);
             }
         });  

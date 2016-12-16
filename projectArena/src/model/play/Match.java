@@ -50,7 +50,7 @@ public class Match {
      */
     public void setMatchID(int matchID) {
         this.matchID = matchID;
-        System.out.println(""+matchID);
+        System.out.println("\n"+matchID);
     }
     /**
     * getMatchID gets the ID for the match 

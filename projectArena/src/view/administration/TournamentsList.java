@@ -15,10 +15,10 @@ public class TournamentsList {
 
     public ArrayList getTournamentsName() {
         ArrayList tournamentNames = new ArrayList();
-        tournamentNames.add("TournamentStyle");
-        tournamentNames.add("TournamentStyle");
-        tournamentNames.add("TournamentStyle");
-        tournamentNames.add("TournamentStyle");
+        tournamentNames.add("Elimination");
+        tournamentNames.add("Team Deathmatch");
+        tournamentNames.add("Free for all");
+        tournamentNames.add("Generic");
         return tournamentNames;
     }
 

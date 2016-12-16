@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import view.ArenaView;
 import view.administration.HandleGameView;
 import view.administration.InstallGameView;
+import view.administration.TournamentStyleView;
 
 /**
  *
@@ -40,7 +41,9 @@ public class OperatorView extends ArenaView{
         handleGames.setOnAction(e->{
             HandleGameView handleGame = new HandleGameView(arenaframe);
             handleGame.show();
-            
+        });        
+        handleTournaments.setOnAction(e->{
+            TournamentStyleView handleTournament = new TournamentStyleView(arenaframe);
         });
         
         initOperatorOptions();
