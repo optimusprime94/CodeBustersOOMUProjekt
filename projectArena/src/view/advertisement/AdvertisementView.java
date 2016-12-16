@@ -96,9 +96,12 @@ public class AdvertisementView {
     public void switchAd(String newAd){
         
         advertPane.getChildren().removeAll();
+        advertPane.getChildren().clear();
+
         this.advertisementFile = newAd;
         adImage = new Image(advertisementFile, arenaframe.widthProperty().doubleValue() - 20, 80, false, false);
-        adView = new ImageView(adImage);        
+        
+        adView = new ImageView(adImage); 
         advertPane.getChildren().add(adView);
 
     }
