@@ -26,7 +26,7 @@ public class LeagueOwnerView extends ArenaView{
     private BorderPane arenaframe;
     /* operator attribut */
     private Menu options;
-    private MenuItem createTournament ;
+    private MenuItem createTournament;
     
     
     /* konstruktor: med användarnamn som parameter */
