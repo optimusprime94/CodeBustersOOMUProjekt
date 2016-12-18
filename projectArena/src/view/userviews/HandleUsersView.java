@@ -6,6 +6,7 @@
 package userviews;
 
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -46,7 +47,6 @@ class HandleUsersView {
         grid.addRow(2, lblPassword, tfPassword);
         grid.addRow(3, lblType, tfType);
 
-        grid.addRow(4, create);
         grid.addRow(5, remove);
         grid.addRow(6, update);
         grid.paddingProperty().set(new Insets(20));
@@ -65,6 +65,18 @@ class HandleUsersView {
             String name = tfAccountName.getText();
             System.out.print(name + password + type);
             UserDatabase.updateUser(name, password, type);
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("User account is now UPDATED!");
+            alert.showAndWait();
+        });
+
+        remove.setOnAction(e -> {
+            String name = tfAccountName.getText();
+            UserDatabase.deleteUser(name);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("User account is now DELETED!");
+            alert.showAndWait();
         });
 
     }
