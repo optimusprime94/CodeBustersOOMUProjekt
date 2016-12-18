@@ -44,7 +44,7 @@ public class LeagueOwnerView extends ArenaView{
             createTournamentView.show();
             
         });
-        
+        LogoutMenu();
         initOperatorOptions();
     }
     

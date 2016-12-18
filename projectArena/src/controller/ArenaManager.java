@@ -15,9 +15,12 @@ import view.StartView;
  */
 public class ArenaManager {
 
-    ArenaView start;
+    private ArenaView start;
+    private Stage stage;
 
     public ArenaManager(Stage stage) {
+        this.stage = stage;
+        this.stage.close();
         start = new StartView(stage);
 
     }

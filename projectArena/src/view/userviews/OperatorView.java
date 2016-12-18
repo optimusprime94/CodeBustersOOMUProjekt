@@ -1,9 +1,11 @@
+package userviews;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view.userviews;
+
 
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -26,7 +28,7 @@ public class OperatorView extends ArenaView{
     private BorderPane arenaframe;
     /* operator attribut */
     private Menu options;
-    private MenuItem handleGames, handleTournaments;
+    private MenuItem handleGames, handleTournaments, handleUsers;
     
     
     /* konstruktor: med användarnamn som parameter */
@@ -37,7 +39,9 @@ public class OperatorView extends ArenaView{
         this.arenaframe = super.arenaframe;
         options = new Menu("Administration");
         handleGames = new MenuItem("Handle Games");
-        handleTournaments = new MenuItem("Handle Torunaments");
+        handleTournaments = new MenuItem("Handle Tournaments");
+        handleUsers = new MenuItem("Handle Arena Users");
+        
         handleGames.setOnAction(e->{
             HandleGameView handleGame = new HandleGameView(arenaframe);
             handleGame.show();
@@ -45,13 +49,16 @@ public class OperatorView extends ArenaView{
         handleTournaments.setOnAction(e->{
             TournamentStyleView handleTournament = new TournamentStyleView(arenaframe);
         });
-        
+        handleUsers.setOnAction(e-> {
+            HandleUsersView handleUsers = new HandleUsersView(arenaframe);
+        });
+        LogoutMenu();
         initOperatorOptions();
     }
     
     private void initOperatorOptions(){
         
-        options.getItems().addAll(handleGames, handleTournaments);
+        options.getItems().addAll(handleGames, handleTournaments, handleUsers);
         menubar.getMenus().addAll(options);
     }
     

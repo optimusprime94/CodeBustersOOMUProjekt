@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view.general;
+package general;
 
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
@@ -28,7 +28,7 @@ import view.userviews.PlayerView;
 import view.CreateAccountView;
 import view.userviews.AdvertiserView;
 import view.userviews.LeagueOwnerView;
-import view.userviews.OperatorView;
+import userviews.OperatorView;
 
 
 public class LoginView {

@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.ArenaManager;
 import view.advertisement.AdvertisementView;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -26,21 +27,21 @@ public abstract class ArenaView {
 
     protected Stage stage;
     private Scene scene;
-    private VBox rightPanel;
-    Menu userAccountMenu = new Menu("Account");
+    private HBox topBox;
+    Menu accountMenu;
     Menu homeMenu = new Menu("Home");
     Menu arenaMenu = new Menu("Arena");
 
     /* attributer som subklasserna skall kunna komma åt och/ eller ändra. */
+    protected String username = "Welcome to Arena!";
     protected BorderPane arenaframe;
     protected MenuBar menubar;
-    protected String username;
     protected int minWidth = 800, minHeight = 600;
     /* MenuItems som skall följa med alla som ärver från arenaview */
+    protected MenuItem logoutItem = new MenuItem("sign out");
     protected MenuItem homeItem = new MenuItem("Go to home");
     protected MenuItem aboutUsItem = new MenuItem("About us");
     protected MenuItem aboutArenaItem = new MenuItem("About Arena");
-    
     
     
     AdvertisementView adView;                                                   //Ändrad
@@ -56,11 +57,10 @@ public abstract class ArenaView {
         menubar = new MenuBar();
 
         adView = new AdvertisementView(arenaframe);                             //Ändrad
-        adView.setAdvertisement("image/ad_arena.png"); // sätter reklambilden
+        adView.setAdvertisement("view/image/ad_arena.png"); // sätter reklambilden
 
         /* används så att användarens namn visas */
-        rightPanel = new VBox();
-        this.username = username;
+        topBox = new HBox(menubar);
         actions();
     }
 
@@ -68,7 +68,6 @@ public abstract class ArenaView {
 
         arenaStyle();
         initMenu(); //anropar inställningarna för menyn
-        displayRightPanel();
         stage.setTitle("Arena");
         stage.setScene(scene);
         stage.show();
@@ -78,7 +77,7 @@ public abstract class ArenaView {
 
         scene.getStylesheets().add("view/arenastylesheet.css");
         Background background = new Background(new BackgroundImage(
-                new Image("image/lightTheme3.jpg"),
+                new Image("view/image/lightTheme3.jpg"),
                 BackgroundRepeat.SPACE,
                 BackgroundRepeat.SPACE,
                 BackgroundPosition.CENTER,
@@ -95,29 +94,24 @@ public abstract class ArenaView {
                 + "-fx-font-family: Segoe UI Light;"
                 + "-fx-padding: 10 50 10 50;" // top, right, bottom, left
                 + "-fx-background-color: rgba(255, 255, 255, 0.5);"
-                + "-fx-effect: dropshadow(gaussian, Black, 50, 0, 0, 0);"
-                + "-fx-background-insets: 50;");
+                + "-fx-effect: dropshadow(gaussian, Black, 50, 0, 0, 0);");
 
         /* skapar och sätter in items i homeMenu. */
         homeMenu.getItems().addAll(homeItem);
         arenaMenu.getItems().addAll(aboutUsItem, aboutArenaItem);
-        menubar.getMenus().addAll(homeMenu, userAccountMenu, arenaMenu);
+        menubar.getMenus().addAll(homeMenu, arenaMenu);
     }
 
-    public void displayRightPanel() {
-        Label user = new Label(username);
-        user.setOnMouseEntered(e -> user.setEffect(new DropShadow(15, Color.DARKGREEN)));
-        user.setOnMouseExited(e -> user.setEffect(new DropShadow(15, Color.TRANSPARENT)));
-        user.setStyle(
-                "-fx-font-size: 20 pt;" // text storlek.
-
-                + "-fx-text-fill: dodgerblue;"
-                + "-fx-font-family: Segoe UI Light;"
-                + "-fx-padding: 10 50 10 50;"); // top, right, bottom, left);
-        rightPanel.getChildren().add(user);
-        // arenaframe.setRight(rightPanel);
-
-    }
+protected void LogoutMenu(){
+    accountMenu = new Menu(username);
+    accountMenu.getItems().add(logoutItem);
+    menubar.getMenus().add(accountMenu);
+    logoutItem.setOnAction(e->{
+        ArenaManager am = new ArenaManager(stage);
+        am.run();
+    });
+    
+}
 
     private void actions() {
         aboutArenaItem.setOnAction(e -> new AboutArenaView(arenaframe));

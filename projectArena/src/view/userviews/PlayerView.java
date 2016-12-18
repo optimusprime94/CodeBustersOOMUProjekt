@@ -42,7 +42,7 @@ public class PlayerView extends ArenaView {
         /* skapar och sätter in items i gamesMenu. */
         shopItem = new MenuItem("Shop");
         gamesItem = new MenuItem("Games");
-
+LogoutMenu();
         initPlayerView();
     }
 
