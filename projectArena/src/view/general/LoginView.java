@@ -111,6 +111,10 @@ public class LoginView {
             case 3: ArenaView lView = new LeagueOwnerView(username, primaryStage);
                 lView.displayArena();
                 break;
+            case 4: ArenaView aView = new AdvertiserView(username, primaryStage);
+                aView.displayArena();
+                break;
+            default: System.out.println("Error, usertype not recognised");
         }
         
     }

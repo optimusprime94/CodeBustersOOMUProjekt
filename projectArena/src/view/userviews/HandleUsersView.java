@@ -59,16 +59,22 @@ class HandleUsersView {
     private void buttonConfigurations() {
 
         update.setOnAction(e -> {
-
-            int type = Integer.parseInt(tfType.getText());
-            String password = tfPassword.getText();
             String name = tfAccountName.getText();
-            System.out.print(name + password + type);
-            UserDatabase.updateUser(name, password, type);
+            if(!(UserDatabase.getUser(name))){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("User not found");
+                alert.showAndWait();
+            }
+            else{
+                int type = Integer.parseInt(tfType.getText());
+                String password = tfPassword.getText();
+                System.out.print(name + password + type);
+                UserDatabase.updateUser(name, password, type);
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText("User account is now UPDATED!");
-            alert.showAndWait();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText("User account is now UPDATED!");
+                alert.showAndWait();
+            }
         });
 
         remove.setOnAction(e -> {
