@@ -11,7 +11,6 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import view.ArenaView;
-import view.league.CreateTournamentView;
 
 /**
  *
@@ -33,7 +32,7 @@ public class AdvertiserView extends ArenaView{
         super.username = username;
         this.menubar = super.menubar;
         this.arenaframe = super.arenaframe;
-        options = new Menu("AdvertisementView");
+        options = new Menu("Advertisement options");
         checkBalance = new MenuItem("Check Account Balance");
 
         checkBalance.setOnAction(e->{
