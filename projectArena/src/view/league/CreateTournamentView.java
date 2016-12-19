@@ -7,6 +7,7 @@ package view.league;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -44,6 +45,7 @@ public class CreateTournamentView {
         VBox vBox = new VBox();
         arenaFrame.setCenter(vBox);
         vBox.getChildren().addAll(btCreateTournament, labelTournamentName, tournamentName, labelNumberOfPlayers, numberOfPlayers, box);
+        vBox.setPadding(new Insets(20));
         btCreateTournament.setOnAction(e->{
             System.out.println("You created a " + box.getValue() + " tournament with " + numberOfPlayers.getText() + " players, named " + tournamentName.getText());
             arenaFrame.getChildren().remove(vBox);

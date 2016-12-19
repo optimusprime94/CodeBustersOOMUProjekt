@@ -9,6 +9,7 @@ package view.administration;
  *
  * @author S153977
  */
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -52,6 +53,8 @@ public class InstallGameView
         TextField gamePathField = new TextField();
         TextField imagePathField = new TextField();
         VBox vBox = new VBox();
+        vBox.setSpacing(10);
+        vBox.setPadding(new Insets(20));
         vBox.getChildren().addAll(name, nameField, visibility, visibilityField, gamePath, gamePathField, imagePath, imagePathField, btn);
         arenaFrame.setCenter(vBox);
         
