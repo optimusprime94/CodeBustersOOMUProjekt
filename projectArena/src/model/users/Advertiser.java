@@ -19,6 +19,4 @@ public class Advertiser extends User{
     public  UserType getType(){
         return UserType.ADVERTISER;
     }
-
-    
 }

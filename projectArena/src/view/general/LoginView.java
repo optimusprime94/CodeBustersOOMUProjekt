@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package general;
+package view.general;
 
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
@@ -71,6 +71,7 @@ public class LoginView {
         gridPane.setOnKeyPressed(e -> {
             if(e.getCode() == KeyCode.ENTER){
                 if (Authenticated()) {
+                    UserDatabase.updateIpAdress(username);
                     System.out.println(username);
                     login(primaryStage);
                 }
@@ -79,6 +80,7 @@ public class LoginView {
         btLogin.setOnAction(e -> {
 
             if (Authenticated()) {
+                UserDatabase.updateIpAdress(username);
                 System.out.println(username);
                 login(primaryStage);
             }

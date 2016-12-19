@@ -136,4 +136,19 @@ public class UserDatabase {
             System.out.print(ex.getMessage());
         }
     }
+    public static void updateIpAdress(String name) {
+        try {
+            InetAddress adress = InetAddress.getLocalHost();
+            String ipAdress = adress.getHostAddress();
+            Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
+            Statement statement = connection.createStatement();
+            String getUser = "UPDATE arenaUser SET ipAdress ='" + ipAdress + "' WHERE userName = '"+ name +"';";
+            statement.executeUpdate(getUser);
+            connection.close();
+        } catch (Exception ex) {
+            System.out.print(ex.getMessage());
+        }
+    }
+
+        
 }
