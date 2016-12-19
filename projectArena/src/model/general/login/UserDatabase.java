@@ -124,7 +124,7 @@ public class UserDatabase {
             System.out.print(ex.getMessage());
         }
     }
-    
+    /* tar bort användaren från databasen genom namn sökning. */
         public static void deleteUser(String name) {
         try {
             Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
