@@ -42,8 +42,7 @@ public abstract class ArenaView {
     protected MenuItem homeItem = new MenuItem("Go to home");
     protected MenuItem aboutUsItem = new MenuItem("About us");
     protected MenuItem aboutArenaItem = new MenuItem("About Arena");
-    
-    
+
     AdvertisementView adView;                                                   //Ändrad
 
     public ArenaView(Stage stage) {
@@ -61,28 +60,30 @@ public abstract class ArenaView {
 
         /* används så att användarens namn visas */
         topBox = new HBox(menubar);
+
         actions();
     }
 
     public void displayArena() {
 
-        arenaStyle();
+        scene.getStylesheets().add("view/arenastylesheet.css");
+        arenaframe.setBackground(arenaTheme());
         initMenu(); //anropar inställningarna för menyn
         stage.setTitle("Arena");
         stage.setScene(scene);
         stage.show();
     }
 
-    private void arenaStyle() {
+    public static Background arenaTheme() {
 
-        scene.getStylesheets().add("view/arenastylesheet.css");
         Background background = new Background(new BackgroundImage(
                 new Image("view/image/lightTheme3.jpg"),
                 BackgroundRepeat.SPACE,
                 BackgroundRepeat.SPACE,
                 BackgroundPosition.CENTER,
                 new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true)));
-        arenaframe.setBackground(background);
+
+        return background;
 
     }
 
@@ -102,27 +103,27 @@ public abstract class ArenaView {
         menubar.getMenus().addAll(homeMenu, arenaMenu);
     }
 
-protected void LogoutMenu(){
-    accountMenu = new Menu(username);
-    accountMenu.getItems().add(logoutItem);
-    menubar.getMenus().add(accountMenu);
-    logoutItem.setOnAction(e->{
-        ArenaManager am = new ArenaManager(stage);
-        am.run();
-    });
-    
-}
+    protected void LogoutMenu() {
+        accountMenu = new Menu(username);
+        accountMenu.getItems().add(logoutItem);
+        menubar.getMenus().add(accountMenu);
+        logoutItem.setOnAction(e -> {
+            ArenaManager am = new ArenaManager(stage);
+            am.run();
+        });
+
+    }
 
     private void actions() {
         aboutArenaItem.setOnAction(e -> new AboutArenaView(arenaframe));
         homeItem.setOnAction(event -> {
 
             ImageView iv = new ImageView(new Image("image/romanbattle.png"));
-                        Pane pane = new Pane(iv);
+            Pane pane = new Pane(iv);
             iv.fitWidthProperty().bindBidirectional(pane.layoutXProperty());
             iv.fitHeightProperty().bindBidirectional(pane.layoutYProperty());
             arenaframe.setCenter(iv);
-                    
+
         });
     }
 }

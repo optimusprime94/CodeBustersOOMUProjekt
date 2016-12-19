@@ -40,7 +40,7 @@ and open the template in the editor.
 
 /* Gör TextArea Transparent (måste göras på alla barn-noder också)*/
 .text-area {
-    -fx-background-color: rgba(190,190,190, 0.3);
+    -fx-background-color: rgba(190,190,190, 0.0);
 }
 
 .text-area .scroll-pane {

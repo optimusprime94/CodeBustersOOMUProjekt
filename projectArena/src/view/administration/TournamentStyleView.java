@@ -6,6 +6,7 @@
 package view.administration;
 
 import java.util.ArrayList;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -35,6 +36,9 @@ public class TournamentStyleView {
         ArrayList tNames = tList.getTournamentsName();
         ArrayList tStatus = tList.getTournamentsStatus();
 
+        grid.setPadding(new Insets(20));
+        grid.setVgap(10);
+        grid.setHgap(10);
         for (int i = 0; i < tNames.size(); i++) {
             Label statusText = new Label((String) tNames.get(i));
             Button btActivate = new Button("Activate");

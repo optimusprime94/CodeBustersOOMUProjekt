@@ -124,4 +124,16 @@ public class UserDatabase {
             System.out.print(ex.getMessage());
         }
     }
+    
+        public static void deleteUser(String name) {
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
+            Statement statement = connection.createStatement();
+            String deleteUser = "DELETE FROM arenaUser WHERE userName ='" + name + "';";
+            statement.executeUpdate(deleteUser);
+            connection.close();
+        } catch (Exception ex) {
+            System.out.print(ex.getMessage());
+        }
+    }
 }
