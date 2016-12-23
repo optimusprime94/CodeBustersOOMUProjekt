@@ -3,6 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package model.advertisement;
 
 import java.sql.*;
@@ -14,10 +19,10 @@ import java.util.ArrayList;
  *
  * @author S153977
  */
-public class GetAdvertisment {
+public class GetAdvertisement {
     private ArrayList<Advertisement> adverts;
     
-   public GetAdvertisment()
+   public GetAdvertisement()
    {
        this.adverts = new ArrayList<>();
         try
