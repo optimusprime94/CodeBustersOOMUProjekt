@@ -26,7 +26,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import model.advertisement.Advertisement;
-import model.advertisement.GetAdvertisment;
+import model.advertisement.GetAdvertisement;
 
 /**
  *
@@ -48,7 +48,7 @@ public class AdvertisementView {
     public AdvertisementView(BorderPane arenaframe) {
         this.arenaframe = arenaframe;
         advertPane = new StackPane();
-        GetAdvertisment getAds = new GetAdvertisment();
+        GetAdvertisement getAds = new GetAdvertisement();
         this.adverts = getAds.getAdverts();
         
     }

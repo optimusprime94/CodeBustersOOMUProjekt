@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import view.ArenaView;
 import view.administration.HandleGameView;
 import view.administration.InstallGameView;
-import view.league.CreateTournamentView;
+import model.league.OrganizeTournamentView;
 
 /**
  *
@@ -27,6 +27,7 @@ public class LeagueOwnerView extends ArenaView{
     /* operator attribut */
     private Menu options;
     private MenuItem createTournament;
+   
     
     
     /* konstruktor: med användarnamn som parameter */
@@ -39,7 +40,7 @@ public class LeagueOwnerView extends ArenaView{
         createTournament = new MenuItem("Create Tournament");
 
         createTournament.setOnAction(e->{
-            CreateTournamentView createTournamentView = new CreateTournamentView(arenaframe);
+            OrganizeTournamentView createTournamentView = new OrganizeTournamentView(arenaframe);
             
             createTournamentView.show();
             

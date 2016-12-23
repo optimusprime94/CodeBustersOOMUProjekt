@@ -20,12 +20,14 @@ public class DatabaseManager
     private ArrayList<String> gamesLibrary;
     private ArrayList<String> tournaments;
     private ArrayList<Advertisement> adverts;
+    private ArrayList<String> activeTournaments;
     
     public DatabaseManager()
     {
         this.gamesLibrary = new ArrayList<>();
         this.tournaments = new ArrayList<>(); 
-        this.adverts = new ArrayList<>(); 
+        this.adverts = new ArrayList<>();
+        this.activeTournaments = new ArrayList<>();
     }
     
     public ArrayList getGames()
@@ -109,5 +111,25 @@ public class DatabaseManager
         {
             System.out.print(ex.getMessage());
         }
+    }
+    public ArrayList getActiveTournamnets()
+    {
+         try
+        {
+            Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
+            Statement statement = connection.createStatement();
+            String message= "select* from activeTournaments";
+            ResultSet resultSet = statement.executeQuery(message);
+            while (resultSet.next())
+            {
+                String activeTournament = "Id: " + resultSet.getString(1)+ "Name: "+ resultSet.getString(5)+"";
+                activeTournaments.add(activeTournament);
+            }
+        }
+        catch(Exception ex)
+        {
+            System.out.print(ex.getMessage());
+        }
+        return(activeTournaments);
     }
 }
