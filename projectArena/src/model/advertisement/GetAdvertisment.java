@@ -8,7 +8,7 @@ package model.advertisement;
 import java.sql.*;
 import java.util.ArrayList;
 
-
+//Hello
 
 /**
  *
@@ -22,6 +22,7 @@ public class GetAdvertisment {
        this.adverts = new ArrayList<>();
         try
         {
+            
             Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
             Statement statement = connection.createStatement();
             String message= "select* from Adverts";
