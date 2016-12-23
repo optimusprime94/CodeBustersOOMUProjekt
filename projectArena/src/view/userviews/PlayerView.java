@@ -39,7 +39,7 @@ public class PlayerView extends ArenaView {
         this.menubar = super.menubar;
         this.arenaFrame = super.arenaframe;         //För simpelhetens skull
         gameLibrary = new GameLibraryView(arenaFrame);
-        tournamentView = new ApplyForTournamentView(arenaFrame);
+        tournamentView = new ApplyForTournamentView(arenaFrame, username);
         libraryMenu = new Menu("Library");
         /* skapar och sätter in items i gamesMenu. */
         shopItem = new MenuItem("Shop");
