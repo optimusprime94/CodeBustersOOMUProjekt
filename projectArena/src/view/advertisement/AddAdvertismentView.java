@@ -27,8 +27,10 @@ public class AddAdvertismentView {
     {
        this.arenaFrame = arenaFrame; 
 
-        Button btn = new Button();
-        btn.setText("Create new ad");
+        Button btnAdd = new Button();
+        
+        btnAdd.setText("Create new ad");
+        
        
         Label name = new Label("Name:");        //Currently no usefulness
         Label time = new Label("Time:");
@@ -41,10 +43,10 @@ public class AddAdvertismentView {
         VBox vBox = new VBox();
         vBox.setSpacing(10);
         vBox.setPadding(new Insets(20));
-        vBox.getChildren().addAll(name, nameField, time, timeField, urlPath, urlPathField, imagePath, imagePathField, btn);
+        vBox.getChildren().addAll(name, nameField, time, timeField, urlPath, urlPathField, imagePath, imagePathField, btnAdd);
         arenaFrame.setCenter(vBox);
         
-        btn.setOnAction(e->
+        btnAdd.setOnAction(e->
         {
             String urlPathString = urlPathField.getText();
             String imagePathString = imagePathField.getText();
