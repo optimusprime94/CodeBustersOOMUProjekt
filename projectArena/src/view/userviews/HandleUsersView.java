@@ -27,7 +27,7 @@ class HandleUsersView {
 
     private BorderPane mainframe;
     private GridPane grid;
-    private Button create, remove, update;
+    private Button remove, update;
     private TextField tfAccountName, tfPassword, tfType;
     private ListView<String> list;
     private HBox box;
@@ -51,7 +51,6 @@ class HandleUsersView {
         tfAccountName = new TextField();
         tfPassword = new TextField();
         tfType = new TextField();
-        create = new Button("Create");
         remove = new Button("Remove");
         update = new Button("Update");
 
@@ -63,11 +62,11 @@ class HandleUsersView {
         grid.addRow(6, update);
         grid.paddingProperty().set(new Insets(20));
         grid.setVgap(20);
-        
-        list.setMinWidth(200);
+
+        list.setMinWidth(300);
         list.layoutYProperty().bindBidirectional(grid.layoutYProperty());
-                list.layoutXProperty().bindBidirectional(box.layoutXProperty());
-       // list.setLayoutX(grid.layoutYProperty().subtract(20).get());
+        list.layoutXProperty().bindBidirectional(box.layoutXProperty());
+        // list.setLayoutX(grid.layoutYProperty().subtract(20).get());
     }
 
     private void buttonConfigurations() {
@@ -83,7 +82,10 @@ class HandleUsersView {
                 String password = tfPassword.getText();
                 System.out.print(name + password + type);
                 UserDatabase.updateUser(name, password, type);
-
+                /* Uppdaterar listan när en ändring har gjorts*/
+                ObservableList<String> users = UserDatabase.showUser();
+                list.getItems().clear();
+                list.getItems().addAll(users);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setHeaderText("User account is now UPDATED!");
                 alert.showAndWait();
@@ -93,6 +95,10 @@ class HandleUsersView {
         remove.setOnAction(e -> {
             String name = tfAccountName.getText();
             UserDatabase.deleteUser(name);
+            /* Uppdaterar listan när en ändring har gjorts*/
+            ObservableList<String> users = UserDatabase.showUser();
+            list.getItems().clear();
+            list.getItems().addAll(users);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText("User account is now DELETED!");
             alert.showAndWait();
