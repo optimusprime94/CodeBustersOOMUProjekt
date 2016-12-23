@@ -11,6 +11,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import view.ArenaView;
+import view.advertisement.HandleAdvertismentView;
 
 /**
  *
@@ -24,6 +25,8 @@ public class AdvertiserView extends ArenaView{
     /* operator attribut */
     private Menu options;
     private MenuItem checkBalance;
+    private MenuItem defineAdvertisementScheme;
+
     
     
     /* konstruktor: med användarnamn som parameter */
@@ -34,10 +37,17 @@ public class AdvertiserView extends ArenaView{
         this.arenaframe = super.arenaframe;
         options = new Menu("Advertisement options");
         checkBalance = new MenuItem("Check Account Balance");
+        defineAdvertisementScheme = new MenuItem("Define Advertisement Scheme");
+
 
         checkBalance.setOnAction(e->{
             System.out.println("This function is not complete, so for now you have no money. Ha. Ha.");
         });
+        
+        defineAdvertisementScheme.setOnAction(e->{
+            HandleAdvertismentView defineAdvertisementSchemeView = new HandleAdvertismentView(arenaframe);
+        });
+        
         LogoutMenu();
         initOperatorOptions();
     }
@@ -45,6 +55,8 @@ public class AdvertiserView extends ArenaView{
     private void initOperatorOptions(){
         
         options.getItems().addAll(checkBalance);
+        options.getItems().addAll(defineAdvertisementScheme);
+
         menubar.getMenus().addAll(options);
     }
     

@@ -28,7 +28,7 @@ import view.userviews.PlayerView;
 import view.CreateAccountView;
 import view.userviews.AdvertiserView;
 import view.userviews.LeagueOwnerView;
-import userviews.OperatorView;
+import view.userviews.OperatorView;
 
 
 public class LoginView {
@@ -41,7 +41,6 @@ public class LoginView {
     private Label btSignUp = new Label("Sign up");
     private String username;
 
-    
     public LoginView(Stage primaryStage) {
 
         this.gridPane = new GridPane();
@@ -58,7 +57,6 @@ public class LoginView {
         gridPane.add(new Label("Password:"), 0, 1);
         gridPane.add(passwordField, 1, 1);
         gridPane.add(btLogin, 1, 5);
-
 
         // Set properties for UI
         gridPane.setAlignment(Pos.CENTER);
@@ -118,11 +116,8 @@ public class LoginView {
                 break;
             default: System.out.println("Error, usertype not recognised");
         }
-        
     }
-    
     public Node getLoginView(){
         return gridPane;
     }
-
 }
