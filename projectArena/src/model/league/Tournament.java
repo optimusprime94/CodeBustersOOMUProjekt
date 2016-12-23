@@ -21,10 +21,6 @@ public abstract class Tournament {
     protected String name;
     protected Game game;
     
-    public void announce()
-    {
-        
-    }
     public Player getWinner()
     {
         return (new Player());
