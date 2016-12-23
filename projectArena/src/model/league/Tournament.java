@@ -5,6 +5,7 @@
  */
 package model.league;
 
+import model.administration.Game;
 import model.advertisement.Advertisement;
 import model.users.Player;
 
@@ -17,6 +18,8 @@ public abstract class Tournament {
     protected int maxNumberOfPlayers;
     protected Player [] players;
     protected Advertisement advertisment;
+    protected String name;
+    protected Game game;
     
     public void announce()
     {
@@ -41,5 +44,21 @@ public abstract class Tournament {
     }
     public abstract void conductTournament();
     
+    public int getNumberOfPlayers()
+    {
+        return (numberOfPlayers);
+    }
+    public int getMaxNrOfPlayers()
+    {
+        return(maxNumberOfPlayers);
+    }
+    public String getName()
+    {
+        return(name);
+    }
+    public String getGameName()
+    {
+        return(game.getGameName());
+    }
    
 }

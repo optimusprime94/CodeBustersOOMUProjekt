@@ -95,4 +95,19 @@ public class DatabaseManager
         }
         return(adverts);
     }
+    public void saveTournament(Tournament tournament)
+    {
+        try
+        {
+            Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
+            Statement statement = connection.createStatement();
+            String message = "insert into activeTournaments values("+tournament.getNumberOfPlayers()+", "
+                    + ""+tournament.getMaxNrOfPlayers()+",' "+tournament.getName()+"', '"+tournament.getGameName()+"')";
+            statement.executeUpdate(message);
+        }
+        catch(Exception ex)
+        {
+            System.out.print(ex.getMessage());
+        }
+    }
 }

@@ -18,14 +18,15 @@ public class EleminationTournament extends Tournament
     
     private EleminationScheme scheme;
     private Score score;
-    private Game game;
-    public EleminationTournament(int maxPlayers, Game game)
+  
+    public EleminationTournament(int maxPlayers, Game game, String name)
     {
         this.players = new Player[maxPlayers];
         this.maxNumberOfPlayers = maxPlayers;
         this.scheme = new EleminationScheme();
         this.score = new Score(maxPlayers);
         this.game = game;
+        this.name = name;
         
     }
     @Override

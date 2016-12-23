@@ -40,7 +40,6 @@ public class OrganizeTournamentView {
         Label labelNumberOfPlayers = new Label("Number of players");
         Label labelTournamentName = new Label("Tournament name");
         Label labelAdverts = new Label("Select Advertisment id (1-4)");
-       
         ComboBox<String> boxTournaments = new ComboBox<>();
         ComboBox<String> boxGames = new ComboBox<>();
         boxGames.setPromptText("Select Game                ");
@@ -48,12 +47,9 @@ public class OrganizeTournamentView {
         DatabaseManager dbtManager = new DatabaseManager();
         ObservableList<String> tournaments = FXCollections.observableArrayList(dbtManager.getTournaments());
         ObservableList<String> games = FXCollections.observableArrayList(dbtManager.getGames()); 
-        ArrayList<Advertisement> adverts = new ArrayList<>();
-   
+        ArrayList<Advertisement> adverts = dbtManager.getAdverts();
         boxGames.getItems().addAll(games);
         boxTournaments.getItems().addAll(tournaments);
-        
-        
         VBox vBox = new VBox();
         arenaFrame.setCenter(vBox);
         vBox.getChildren().addAll(labelTournamentName, tournamentName, labelAdverts, advertisment, labelNumberOfPlayers, numberOfPlayers, boxGames, boxTournaments, btCreateTournament);
@@ -69,16 +65,11 @@ public class OrganizeTournamentView {
                 if (game.matches("Othello"));
                 {
                     Game othello = new Game("othello", "1", "src/gamelib", "image/icons/othello.png");
-                    Tournament newTournament = new EleminationTournament(nrOfPlayers, othello);
-                    newTournament.addAdvert(adverts.get(advertID-1));
-                    newTournament.conductTournament();
+                    Tournament newTournament = new EleminationTournament(nrOfPlayers, othello, tournamentName.getText());
+                    newTournament.addAdvert(adverts.get(advertID-1)); 
+                    dbtManager.saveTournament(newTournament);
                 }
             }
-            
-            System.out.println("You created a " + boxTournaments.getValue() + " tournament with " + numberOfPlayers.getText() + " players, named " + tournamentName.getText());
-            arenaFrame.getChildren().remove(vBox);
-        });
-        
-    }
-    
+        }); 
+    }  
 }
