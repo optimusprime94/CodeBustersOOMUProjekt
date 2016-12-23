@@ -26,7 +26,7 @@ public class DeleteAdvertisementView {
 
         Button btnDelete = new Button();
         
-        btnDelete.setText("Create new ad");
+        btnDelete.setText("Delete ad");
         
        
         Label adIdLabel = new Label("ID:");
