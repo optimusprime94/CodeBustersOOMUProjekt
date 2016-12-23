@@ -9,8 +9,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import model.advertisement.HandleAdvertisement;
-import view.administration.InstallGameView;
+
 
 /**
  *
@@ -38,7 +37,7 @@ public class HandleAdvertisementView {
             arenaFrame.getChildren().remove(vBox);
         });
         deleteAd.setOnAction(e -> {
-            HandleAdvertisement.deleteAdvertisment(6);
+            DeleteAdvertisementView daw = new DeleteAdvertisementView(arenaFrame);
             arenaFrame.getChildren().remove(vBox);
         });
     }
