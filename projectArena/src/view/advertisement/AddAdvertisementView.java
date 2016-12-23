@@ -53,7 +53,7 @@ public class AddAdvertisementView {
             String imagePathString = imagePathField.getText();
             String timeString = timeField.getText();
             Advertisement newAdvertisement = new Advertisement(imagePathString, timeString, urlPathString);
-            HandleAdvertisement.AddAdvertisment(newAdvertisement);
+            HandleAdvertisement.addAdvertisment(newAdvertisement);
             arenaFrame.getChildren().remove(vBox);
         });
     }    

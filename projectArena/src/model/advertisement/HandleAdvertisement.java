@@ -15,7 +15,7 @@ import java.sql.Statement;
  * @author S153298
  */
 public class HandleAdvertisement {
-    public static void AddAdvertisment(Advertisement newAd)
+    public static void addAdvertisment(Advertisement newAd)
     {
         try{
         Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
@@ -25,6 +25,22 @@ public class HandleAdvertisement {
         String url = newAd.getUrl();
         String time = newAd.getTime();
         String SQLMessage = "insert into Adverts (filePath, timeLenth, url) VALUES ('"+filePath+"', '"+time+"', '"+url+"');";
+        statement.executeUpdate(SQLMessage);
+        connection.close();
+        }
+        catch (SQLException ex)
+        {
+            System.out.print(ex.getMessage());
+        } 
+    }
+        public static void deleteAdvertisment(int adId)
+    {
+        try{
+        Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
+        Statement statement = connection.createStatement();
+       
+
+        String SQLMessage = "DELETE from Adverts where id = " + adId;
         statement.executeUpdate(SQLMessage);
         connection.close();
         }
