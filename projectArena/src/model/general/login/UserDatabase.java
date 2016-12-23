@@ -12,6 +12,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  * This class handles the communication between ARENA and the database in
@@ -114,18 +116,25 @@ public class UserDatabase {
     public static void updateUser(String name, String password, int type) {
         try {
 
-            if(type == 0) type = UserDatabase.getUserType(name);
+            if (type == 0) {
+                type = UserDatabase.getUserType(name);
+            }
             Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
             Statement statement = connection.createStatement();
-            String updateUser = "UPDATE arenaUser SET userPassword ='" + password + "', userType = " + type + " WHERE userName = '"+ name +"';";
+            String updateUser = "UPDATE arenaUser SET userPassword ='" + password + "', userType = " + type + " WHERE userName = '" + name + "';";
             statement.executeUpdate(updateUser);
             connection.close();
         } catch (Exception ex) {
             System.out.print(ex.getMessage());
         }
     }
+
     /* tar bort användaren från databasen genom namn sökning. */
-        public static void deleteUser(String name) {
+
+    public static void deleteUser(String name) {
+
+    
+
         try {
             Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
             Statement statement = connection.createStatement();
@@ -136,13 +145,15 @@ public class UserDatabase {
             System.out.print(ex.getMessage());
         }
     }
+
+
     public static void updateIpAdress(String name) {
         try {
             InetAddress adress = InetAddress.getLocalHost();
             String ipAdress = adress.getHostAddress();
             Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
             Statement statement = connection.createStatement();
-            String getUser = "UPDATE arenaUser SET ipAdress ='" + ipAdress + "' WHERE userName = '"+ name +"';";
+            String getUser = "UPDATE arenaUser SET ipAdress ='" + ipAdress + "' WHERE userName = '" + name + "';";
             statement.executeUpdate(getUser);
             connection.close();
         } catch (Exception ex) {
@@ -150,5 +161,24 @@ public class UserDatabase {
         }
     }
 
-        
+    public static ObservableList<String> showUser() {
+        String userInfo = "";
+        ObservableList<String> names = FXCollections.observableArrayList();
+        try {
+
+            Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
+            Statement statement = connection.createStatement();
+            String getUser = "SELECT * FROM arenaUser";
+            ResultSet resultSet = statement.executeQuery(getUser);
+            while (resultSet.next()) {
+                userInfo = "Id: " + resultSet.getString(1) + " Name: " + resultSet.getString(2) + " Password: " + resultSet.getString(3);
+                names.add(userInfo);
+
+            }
+        } catch (SQLException ex) {
+            System.out.print(ex.getMessage());
+        }
+        return names;
+    }
+
 }

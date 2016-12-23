@@ -5,13 +5,18 @@
  */
 package view.userviews;
 
+import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import model.general.login.UserDatabase;
 
 /**
@@ -24,15 +29,22 @@ class HandleUsersView {
     private GridPane grid;
     private Button create, remove, update;
     private TextField tfAccountName, tfPassword, tfType;
+    private ListView<String> list;
+    private HBox box;
 
     public HandleUsersView(BorderPane mainframe) {
         this.mainframe = mainframe;
         grid = new GridPane();
-        gridLayout();
+        /* hämtar en lista med användare */
+        ObservableList<String> users = UserDatabase.showUser();
+        list = new ListView<String>(users);
+        box = new HBox(list, grid);
+        handleUserLayout();
         buttonConfigurations();
+        mainframe.setCenter(box);
     }
 
-    private void gridLayout() {
+    private void handleUserLayout() {
         Label lblaccountName = new Label("Account Name: ");
         Label lblPassword = new Label("Password: ");
         Label lblType = new Label("UserType (0 = no change): ");
@@ -46,26 +58,27 @@ class HandleUsersView {
         grid.addRow(1, lblaccountName, tfAccountName);
         grid.addRow(2, lblPassword, tfPassword);
         grid.addRow(3, lblType, tfType);
-
+        //grid.gridLinesVisibleProperty().setValue(Boolean.TRUE);
         grid.addRow(5, remove);
         grid.addRow(6, update);
         grid.paddingProperty().set(new Insets(20));
         grid.setVgap(20);
-        // grid.setHgap(10);
-
-        mainframe.setCenter(grid);
+        
+        list.setMinWidth(200);
+        list.layoutYProperty().bindBidirectional(grid.layoutYProperty());
+                list.layoutXProperty().bindBidirectional(box.layoutXProperty());
+       // list.setLayoutX(grid.layoutYProperty().subtract(20).get());
     }
 
     private void buttonConfigurations() {
 
         update.setOnAction(e -> {
             String name = tfAccountName.getText();
-            if(!(UserDatabase.getUser(name))){
+            if (!(UserDatabase.getUser(name))) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText("User not found");
                 alert.showAndWait();
-            }
-            else{
+            } else {
                 int type = Integer.parseInt(tfType.getText());
                 String password = tfPassword.getText();
                 System.out.print(name + password + type);
