@@ -10,6 +10,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import model.league.ApplyForTournamentView;
 import view.ArenaView;
 
 
@@ -25,8 +26,9 @@ public class PlayerView extends ArenaView {
     
     /* operator attribut */
     private Menu libraryMenu;
-    private MenuItem shopItem, gamesItem;
+    private MenuItem shopItem, gamesItem, applyForTournament;
     private GameLibraryView gameLibrary;
+    private ApplyForTournamentView tournamentView;
     
     
     
@@ -37,22 +39,24 @@ public class PlayerView extends ArenaView {
         this.menubar = super.menubar;
         this.arenaFrame = super.arenaframe;         //För simpelhetens skull
         gameLibrary = new GameLibraryView(arenaFrame);
-
+        tournamentView = new ApplyForTournamentView(arenaFrame, username);
         libraryMenu = new Menu("Library");
         /* skapar och sätter in items i gamesMenu. */
         shopItem = new MenuItem("Shop");
         gamesItem = new MenuItem("Games");
+        applyForTournament = new MenuItem("Apply for tournament");
 LogoutMenu();
         initPlayerView();
     }
 
     private void initPlayerView() {
 
-        libraryMenu.getItems().addAll(shopItem, gamesItem);
+        libraryMenu.getItems().addAll(shopItem, gamesItem, applyForTournament);
         menubar.getMenus().addAll(libraryMenu);
 
         gamesItem.setOnAction(event -> gameLibrary.showGameLibrary());
         shopItem.setOnAction(event -> System.out.println("SHOP"));
+        applyForTournament.setOnAction(event -> tournamentView.show());
     }
 
 }

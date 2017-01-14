@@ -70,6 +70,7 @@ public class OrganizeTournamentView {
                     dbtManager.saveTournament(newTournament);
                 }
             }
+            arenaFrame.getChildren().remove(vBox);
         }); 
     }  
 }
