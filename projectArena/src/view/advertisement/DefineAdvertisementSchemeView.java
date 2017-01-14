@@ -46,5 +46,5 @@ public class DefineAdvertisementSchemeView {
             HandleAdvertisement.changeAdvertisementTime(idString, timeString);
             arenaFrame.getChildren().remove(vBox);
         });
-    }  
+    } 
 }

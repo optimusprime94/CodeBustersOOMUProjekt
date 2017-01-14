@@ -64,6 +64,7 @@ public class AdvertiserView extends ArenaView{
         
         options.getItems().addAll(checkBalance);
         options.getItems().addAll(handleAdvertisement);
+        options.getItems().addAll(defineAdvertisementScheme);
 
         menubar.getMenus().addAll(options);
     }

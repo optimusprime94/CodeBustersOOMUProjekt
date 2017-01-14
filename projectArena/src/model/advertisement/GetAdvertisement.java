@@ -29,7 +29,7 @@ public class GetAdvertisement {
         {
             Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
             Statement statement = connection.createStatement();
-            String message= "select* from Adverts";
+            String message= "select * from Adverts";
             ResultSet resultSet = statement.executeQuery(message);
             while (resultSet.next())
             {

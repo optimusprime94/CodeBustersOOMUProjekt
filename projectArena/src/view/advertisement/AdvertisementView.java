@@ -80,7 +80,7 @@ public class AdvertisementView {
         advertPane.getChildren().removeAll();
         advertPane.getChildren().clear();
         this.advertisementFile = newAd;
-        adImage = new Image(advertisementFile, arenaframe.widthProperty().doubleValue() - 20, 80, false, false);
+        adImage = new Image("view/"+advertisementFile, arenaframe.widthProperty().doubleValue() - 20, 80, false, false);
         adView = new ImageView(adImage); 
         advertPane.getChildren().add(adView);
 
