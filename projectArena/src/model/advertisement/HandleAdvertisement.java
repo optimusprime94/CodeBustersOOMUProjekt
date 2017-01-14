@@ -49,4 +49,20 @@ public class HandleAdvertisement {
             System.out.print(ex.getMessage());
         } 
     }
+    public static void changeAdvertisementTime(String id, String time)
+    {
+        try{
+        Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
+        Statement statement = connection.createStatement();
+       
+        
+        String SQLMessage = "UPDATE Adverts SET timeLenth = "+ time + " WHERE id = " + id;
+        statement.executeUpdate(SQLMessage);
+        connection.close();
+        }
+        catch (SQLException ex)
+        {
+            System.out.print(ex.getMessage());
+        } 
+    }
 }

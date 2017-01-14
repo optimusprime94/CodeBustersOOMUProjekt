@@ -12,6 +12,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import view.ArenaView;
 import view.advertisement.AddAdvertisementView;
+import view.advertisement.DefineAdvertisementSchemeView;
 import view.advertisement.HandleAdvertisementView;
 
 /**
@@ -27,6 +28,7 @@ public class AdvertiserView extends ArenaView{
     private Menu options;
     private MenuItem checkBalance;
     private MenuItem handleAdvertisement;
+    private MenuItem defineAdvertisementScheme;
 
     
     
@@ -39,6 +41,7 @@ public class AdvertiserView extends ArenaView{
         options = new Menu("Advertisement options");
         checkBalance = new MenuItem("Check Account Balance");
         handleAdvertisement = new MenuItem("Handle Advertisement");
+        defineAdvertisementScheme= new MenuItem("Define Advertisement Scheme");
 
 
         checkBalance.setOnAction(e->{
@@ -47,6 +50,10 @@ public class AdvertiserView extends ArenaView{
         
         handleAdvertisement.setOnAction(e->{
             HandleAdvertisementView handleAdvertisement = new HandleAdvertisementView(arenaframe);
+        });
+        
+        defineAdvertisementScheme.setOnAction(e->{
+            DefineAdvertisementSchemeView defineAdvertisementScheme = new DefineAdvertisementSchemeView(arenaframe);
         });
         
         LogoutMenu();
