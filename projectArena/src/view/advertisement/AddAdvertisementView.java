@@ -33,25 +33,26 @@ public class AddAdvertisementView {
         btnAdd.setText("Create new ad");
         
        
-        Label name = new Label("Name:");        //Currently no usefulness
-        Label time = new Label("Time:");
+        //Label name = new Label("Name:");
+        //Label time = new Label("Time:");
         Label urlPath = new Label("URL path:");
         Label imagePath = new Label("Image path:");
-        TextField nameField = new TextField();      //Currently no usefulness
-        TextField timeField = new TextField();
+        //TextField nameField = new TextField();
+        //TextField timeField = new TextField();
         TextField urlPathField = new TextField();
         TextField imagePathField = new TextField();
         VBox vBox = new VBox();
         vBox.setSpacing(10);
         vBox.setPadding(new Insets(20));
-        vBox.getChildren().addAll(name, nameField, time, timeField, urlPath, urlPathField, imagePath, imagePathField, btnAdd);
+        vBox.getChildren().addAll(/*name, nameField, time, timeField,*/ urlPath, urlPathField, imagePath, imagePathField, btnAdd);
         arenaFrame.setCenter(vBox);
         
         btnAdd.setOnAction(e->
         {
             String urlPathString = urlPathField.getText();
             String imagePathString = imagePathField.getText();
-            String timeString = timeField.getText();
+            //String timeString = timeField.getText();
+            String timeString = "4000";     //Default value
             Advertisement newAdvertisement = new Advertisement(imagePathString, timeString, urlPathString);
             HandleAdvertisement.addAdvertisment(newAdvertisement);
             arenaFrame.getChildren().remove(vBox);

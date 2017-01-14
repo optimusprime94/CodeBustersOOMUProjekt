@@ -7,26 +7,18 @@ package view.advertisement;
 
 import java.awt.Desktop;
 import java.net.URI;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Timer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.application.Application;
-import static javafx.application.Application.launch;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
 import model.advertisement.Advertisement;
-import model.advertisement.GetAdvertisment;
+import model.advertisement.GetAdvertisement;
 
 /**
  *
@@ -39,8 +31,6 @@ public class AdvertisementView {
     private StackPane advertPane;
     private ImageView adView;
     private Image adImage;
-    private String[] filepaths = {"image/VisitorAd.gif", "image/darkgrey.jpg", "image/gladiator.jpg", "image/lightTheme1.jpg"};
-    private int[] times = {5000,9000,3000,7000};
     private int adIndex = 0;
     private ArrayList<Advertisement> adverts;
 
@@ -48,7 +38,7 @@ public class AdvertisementView {
     public AdvertisementView(BorderPane arenaframe) {
         this.arenaframe = arenaframe;
         advertPane = new StackPane();
-        GetAdvertisment getAds = new GetAdvertisment();
+        GetAdvertisement getAds = new GetAdvertisement();
         this.adverts = getAds.getAdverts();
         
     }
@@ -70,21 +60,13 @@ public class AdvertisementView {
         advertPane.setOnMouseClicked(e -> {
             
             try {
-                //filepath = filepath % 2;
-                //System.out.println(filepath);
-                //switchAd(filepaths[filepath++]);
-                //System.out.println(filepath);
-                
                 System.out.print("ad clicked!");
                 Desktop desktop = java.awt.Desktop.getDesktop();
                 URI advertisementURI = new URI(adverts.get(adIndex).getUrl());
                 desktop.browse(advertisementURI);
-            
             } catch (Exception ex) {
                 Logger.getLogger(AdvertisementView.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-            
         });
     }
 
@@ -97,10 +79,8 @@ public class AdvertisementView {
         
         advertPane.getChildren().removeAll();
         advertPane.getChildren().clear();
-
         this.advertisementFile = newAd;
         adImage = new Image(advertisementFile, arenaframe.widthProperty().doubleValue() - 20, 80, false, false);
-        
         adView = new ImageView(adImage); 
         advertPane.getChildren().add(adView);
 
