@@ -155,7 +155,10 @@ public class UserDatabase {
             Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
             Statement statement = connection.createStatement();
             String deleteUser = "DELETE FROM arenaUser WHERE userName ='" + name + "';";
+            String deleteID = "DELETE FROM advertiser WHERE ID ='" + getUserId(name) + "';";
+            statement.executeUpdate(deleteID);
             statement.executeUpdate(deleteUser);
+            
             connection.close();
         } catch (Exception ex) {
             System.out.print(ex.getMessage());
