@@ -48,7 +48,7 @@ public class AdvertiserView extends ArenaView{
 
 
         checkBalance.setOnAction(e->{
-            CheckAccountBalanceView checkAccountBalanceView = new CheckAccountBalanceView(arenaframe);
+            CheckAccountBalanceView checkAccountBalanceView = new CheckAccountBalanceView(arenaframe, username);
         });
         
         handleAdvertisement.setOnAction(e->{

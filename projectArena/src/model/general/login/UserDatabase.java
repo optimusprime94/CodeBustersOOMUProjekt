@@ -75,6 +75,22 @@ public class UserDatabase {
         }
         return password;
     }
+        public static String getUserId(String name) {
+        String userID = "";
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
+            Statement statement = connection.createStatement();
+            String getUser = "select userID from arenaUser where userName = '" + name + "'";
+            ResultSet resultSet = statement.executeQuery(getUser);
+            while (resultSet.next()) {
+                userID = resultSet.getString(1);
+                return (userID);
+            }
+        } catch (SQLException ex) {
+            System.out.print(ex.getMessage());
+        }
+        return userID;
+    }
 
     /**
      * this function takes a username, and returns the integer associated with
