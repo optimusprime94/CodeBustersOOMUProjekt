@@ -18,7 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import model.play.Match;
+import model.play.PlayMatch;
 
 /**
  *
@@ -73,7 +73,7 @@ class GameLibraryView {
                 gameView.setOnMouseExited(e -> gameView.setEffect(new DropShadow(15, Color.TRANSPARENT)));
 
                 gameView.setOnMouseClicked(e -> {
-                    new Match(game);
+                    new PlayMatch(game);
                 });
 
             }
