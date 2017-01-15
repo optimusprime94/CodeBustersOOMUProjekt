@@ -11,8 +11,6 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import view.ArenaView;
-import view.administration.HandleGameView;
-import view.administration.InstallGameView;
 import model.league.OrganizeTournamentView;
 
 /**
@@ -21,10 +19,10 @@ import model.league.OrganizeTournamentView;
  */
 public class LeagueOwnerView extends ArenaView{
 
-    /* superclass referenser */
+    /* superclass references */
     private MenuBar menubar;
     private BorderPane arenaframe;
-    /* operator attribut */
+    /* operator attributes */
     private Menu options;
     private MenuItem createTournament;
    
@@ -45,11 +43,15 @@ public class LeagueOwnerView extends ArenaView{
             createTournamentView.show();
             
         });
-        LogoutMenu();
-        initOperatorOptions();
+    
+        LogoutMenu(); // adds the logout menu.
+        initLeagueOwnerOptions();
     }
     
-    private void initOperatorOptions(){
+    /**
+     * adds the options for league owner to menu.
+     */
+    private void initLeagueOwnerOptions(){
         
         options.getItems().addAll(createTournament);
         menubar.getMenus().addAll(options);

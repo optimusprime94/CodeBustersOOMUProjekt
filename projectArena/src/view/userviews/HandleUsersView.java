@@ -25,6 +25,7 @@ import model.general.login.UserDatabase;
  */
 class HandleUsersView {
 
+    /* Attributes */
     private BorderPane mainframe;
     private GridPane grid;
     private Button remove, update;
@@ -32,18 +33,23 @@ class HandleUsersView {
     private ListView<String> list;
     private HBox box;
 
+    /* Constructor */
     public HandleUsersView(BorderPane mainframe) {
         this.mainframe = mainframe;
         grid = new GridPane();
-        /* hämtar en lista med användare */
+        /* gets an list with users from the database. */
         ObservableList<String> users = UserDatabase.showUser();
-        list = new ListView<String>(users);
+        list = new ListView<>(users);
         box = new HBox(list, grid);
         handleUserLayout();
         buttonConfigurations();
         mainframe.setCenter(box);
     }
 
+    /**
+     * This method creates the layout for handle users, and displays all the
+     * necessary information for handling a user.
+     */
     private void handleUserLayout() {
         Label lblaccountName = new Label("Account Name: ");
         Label lblPassword = new Label("Password: ");
@@ -66,9 +72,12 @@ class HandleUsersView {
         list.setMinWidth(300);
         list.layoutYProperty().bindBidirectional(grid.layoutYProperty());
         list.layoutXProperty().bindBidirectional(box.layoutXProperty());
-        // list.setLayoutX(grid.layoutYProperty().subtract(20).get());
     }
 
+    /**
+     * Adds functionality to the buttons, update and remove. Update which
+     * updates an existing user, and remove, which deletes an existing user.
+     */
     private void buttonConfigurations() {
 
         update.setOnAction(e -> {
@@ -94,14 +103,20 @@ class HandleUsersView {
 
         remove.setOnAction(e -> {
             String name = tfAccountName.getText();
-            UserDatabase.deleteUser(name);
-            /* Uppdaterar listan när en ändring har gjorts*/
-            ObservableList<String> users = UserDatabase.showUser();
-            list.getItems().clear();
-            list.getItems().addAll(users);
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText("User account is now DELETED!");
-            alert.showAndWait();
+            if (!(UserDatabase.getUser(name))) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("User not found");
+                alert.showAndWait();
+            } else {
+                UserDatabase.deleteUser(name);
+                /* Uppdaterar listan när en ändring har gjorts*/
+                ObservableList<String> users = UserDatabase.showUser();
+                list.getItems().clear();
+                list.getItems().addAll(users);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText("User account is now DELETED!");
+                alert.showAndWait();
+            }
         });
 
     }

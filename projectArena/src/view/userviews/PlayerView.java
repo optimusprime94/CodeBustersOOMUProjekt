@@ -45,10 +45,13 @@ public class PlayerView extends ArenaView {
         shopItem = new MenuItem("Shop");
         gamesItem = new MenuItem("Games");
         applyForTournament = new MenuItem("Apply for tournament");
-LogoutMenu();
+        LogoutMenu(); //logout menu
         initPlayerView();
     }
 
+    /**
+     * initiates the settings that are specific for the player.
+     */
     private void initPlayerView() {
 
         libraryMenu.getItems().addAll(shopItem, gamesItem, applyForTournament);

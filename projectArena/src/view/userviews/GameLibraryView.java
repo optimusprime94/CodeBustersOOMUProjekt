@@ -5,7 +5,6 @@
  */
 package view.userviews;
 
-import controller.GameStarter;
 import model.administration.Game;
 import model.administration.Library;
 import java.util.ArrayList;
@@ -26,12 +25,14 @@ import model.play.PlayMatch;
  */
 class GameLibraryView {
 
+    /* Attributes */
     private BorderPane arenaframe;
     private GridPane gamesgrid;
     private Library gamelib;
     private ScrollPane scrollpane;
     private int width = 150, height = 250;
 
+    /* Konstruktor */ 
     GameLibraryView(BorderPane arenaframe) {
         this.scrollpane = new ScrollPane();
         this.arenaframe = arenaframe;
@@ -42,21 +43,19 @@ class GameLibraryView {
     public void showGameLibrary() {
 
         ArrayList<Game> gamelist = new ArrayList<>();
-        /* gap: mellanrum mellan ikonerna (i pixlar), och padding är mellanrum runt gridens kanter.*/
+        /* gap: between the icons (in pixels), and padding arround the borders */
         gamesgrid.setHgap(15);
         gamesgrid.setVgap(15);
-        gamesgrid.setPadding(new Insets(50, 15, 15, 50)); // top, right, bottom, left: mellanrum för gridens kanter.
+        gamesgrid.setPadding(new Insets(50, 15, 15, 50)); // top, right, bottom, left: around grid borders.
 
-        /* rensar allt i gamesgrid och gamelist, innan spelen uppdateras. */
+        /* clears the gamesgrid before games are added */
         gamesgrid.getChildren().clear();
-//        gamelist.clear();
         gamelist = gamelib.getgameLibrary();
-        /* lägg till spel efter här: */
+        /* add games after this: */
 
-//        gamelist.add(new Game("Othello", "1", "src/gamelib","image/icons/game_othello.png"));
-        Iterator it = gamelist.iterator(); // för att iterera genom spelen.
+        Iterator it = gamelist.iterator(); // iterator for the games
         int row = 0;
-        /* Itererar igenom alla spel och lägger till deras icon till vyn */
+        /* iterates through the games and adds them */
         while (it.hasNext()) {
             for (int i = 0; i <= 3; i++) {
                 if (!it.hasNext()) {
@@ -82,11 +81,19 @@ class GameLibraryView {
         setupScrollbar();
     }
 
+    /**
+     * inserts the scrollbar in the mainframe.
+     */
     private void setupScrollbar() {
         scrollpane.setContent(gamesgrid);
         arenaframe.setCenter(scrollpane);
     }
 
+    /**
+     * Color highlights for the icons.
+     * @param number a number for which color.
+     * @return 
+     */
     private Color colorHighlight(int number) {
         switch (number) {
             case 0:

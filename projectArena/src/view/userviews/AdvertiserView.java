@@ -11,7 +11,6 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import view.ArenaView;
-import view.advertisement.AddAdvertisementView;
 import view.advertisement.CheckAccountBalanceView;
 import view.advertisement.DefineAdvertisementSchemeView;
 import view.advertisement.HandleAdvertisementView;
@@ -22,10 +21,10 @@ import view.advertisement.HandleAdvertisementView;
  */
 public class AdvertiserView extends ArenaView{
 
-    /* superclass referenser */
+    /* superclass references */
     private MenuBar menubar;
     private BorderPane arenaframe;
-    /* operator attribut */
+    /* operator attributes */
     private Menu options;
     private MenuItem checkBalance;
     private MenuItem handleAdvertisement;
@@ -34,7 +33,7 @@ public class AdvertiserView extends ArenaView{
 
     
     
-    /* konstruktor: med användarnamn som parameter */
+    /* Constructor: with params: username, stage */
     public AdvertiserView(String username, Stage stage) {
         super(stage);
         super.username = username;
@@ -46,25 +45,26 @@ public class AdvertiserView extends ArenaView{
         defineAdvertisementScheme= new MenuItem("Define Advertisement Scheme");
         
 
-
+        /* on action creates the check account balance view */
         checkBalance.setOnAction(e->{
             CheckAccountBalanceView checkAccountBalanceView = new CheckAccountBalanceView(arenaframe, username);
         });
-        
+        /* handle adverisement view */
         handleAdvertisement.setOnAction(e->{
             HandleAdvertisementView handleAdvertisement = new HandleAdvertisementView(arenaframe);
         });
-        
+        /* view for defining the scheme */
         defineAdvertisementScheme.setOnAction(e->{
             DefineAdvertisementSchemeView defineAdvertisementScheme = new DefineAdvertisementSchemeView(arenaframe);
-        });
-        
-        
+        });     
         
         LogoutMenu();
         initOperatorOptions();
     }
     
+    /**
+     * adds the operations for an operator
+     */
     private void initOperatorOptions(){
         
         options.getItems().addAll(checkBalance);

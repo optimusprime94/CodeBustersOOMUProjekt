@@ -14,7 +14,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import view.ArenaView;
 import view.administration.HandleGameView;
-import view.administration.InstallGameView;
 import view.administration.TournamentStyleView;
 
 /**
@@ -23,15 +22,15 @@ import view.administration.TournamentStyleView;
  */
 public class OperatorView extends ArenaView{
 
-    /* superclass referenser */
+    /* superclass references */
     private MenuBar menubar;
     private BorderPane arenaframe;
-    /* operator attribut */
+    /* operator attributes */
     private Menu options;
     private MenuItem handleGames, handleTournaments, handleUsers;
     
     
-    /* konstruktor: med användarnamn som parameter */
+    /* Constructor: with username and stage */
     public OperatorView(String username, Stage stage) {
         super(stage);
         super.username = username;
@@ -56,6 +55,9 @@ public class OperatorView extends ArenaView{
         initOperatorOptions();
     }
     
+    /**
+     * adds the operator options to menu.
+     */
     private void initOperatorOptions(){
         
         options.getItems().addAll(handleGames, handleTournaments, handleUsers);
