@@ -22,21 +22,30 @@ import javafx.scene.Scene;
  * @author JohnBosco
  */
 public class HandleAccountBalance {
-    public static void addFund(Advertisement newAd)
-    {
+    public static void addFund(int id){
         try{
-        Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
-        Statement statement = connection.createStatement();
-       
-        String filePath = newAd.getFilePath();
-       
-       // String SQLMessage =String SQLMessage = "Increse money where the ID is =" +id;
-        //statement.executeUpdate(SQLMessage);
-        connection.close();
+            Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
+            Statement statement = connection.createStatement();
+            // String SQLMessage =String SQLMessage = "Increse money where the ID is =" +id;
+            //statement.executeUpdate(SQLMessage);
+            connection.close();
         }
-        catch (SQLException ex)
-        {
+        catch (SQLException ex){
             System.out.print(ex.getMessage());
         } 
     }
-     }
+        public static int getBalance(int id){
+            
+            try{
+                Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
+                Statement statement = connection.createStatement();
+                connection.close();
+            }
+            catch (SQLException ex){
+                System.out.print(ex.getMessage());
+            }
+            finally{
+                return 50;
+            }
+        }
+}
