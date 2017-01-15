@@ -16,6 +16,7 @@ public class Advertisement
     private String filePath;
     private String time;
     private String url;
+    private String balance; 
     
     public Advertisement(String filePath, String time, String url)
     {
@@ -34,5 +35,8 @@ public class Advertisement
     public String getUrl()
     {
         return(url);
+    }
+    public String getBalance(){
+        return (balance);
     }
 }

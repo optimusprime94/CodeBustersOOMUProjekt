@@ -57,5 +57,5 @@ public class AddAdvertisementView {
             HandleAdvertisement.addAdvertisment(newAdvertisement);
             arenaFrame.getChildren().remove(vBox);
         });
-    }    
+    }
 }
