@@ -29,7 +29,6 @@ public class HandleAccountBalance {
         Statement statement = connection.createStatement();
        
         String filePath = newAd.getFilePath();
-        String currentBalance = newAd.getBalance();
        
        // String SQLMessage =String SQLMessage = "Increse money where the ID is =" +id;
         //statement.executeUpdate(SQLMessage);
