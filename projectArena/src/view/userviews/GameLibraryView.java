@@ -50,7 +50,7 @@ class GameLibraryView {
 
         /* clears the gamesgrid before games are added */
         gamesgrid.getChildren().clear();
-        gamelist = gamelib.getgameLibrary();
+        gamelist = gamelib.getGameLibrary();
         /* add games after this: */
 
         Iterator it = gamelist.iterator(); // iterator for the games
