@@ -5,21 +5,20 @@
  */
 package model.administration;
 
-import model.exceptions.GameIDNotFoundException;
-
 /**
  *
  * @author S153298
  */
 public class Game {
 
+    /* Attributes */
     private boolean visibleToPublic = false;
     private String gameName;
     private int gameId;
     private String gamePath;
     private String imagePath;
 
-
+    /* Constructor 1 */
     public Game(String name, String visibleToPublic, String gamePath, String imagePath ) {
         this.gameName = name;
         if (visibleToPublic.equals("1")) {
@@ -30,7 +29,7 @@ public class Game {
         this.gamePath = gamePath;
         this.imagePath = imagePath;
     }
-
+    /* Constructor 2 */
     public Game(String gameId, String gameName, String visibleToPublic, String gamePath, String imagePath) {
         this.gameId = Integer.valueOf(gameId);
         this.gameName = gameName;

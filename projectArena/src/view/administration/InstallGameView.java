@@ -25,24 +25,24 @@ import model.administration.Game;
  *
  * @author S153977
  */
-public class InstallGameView 
-{ 
+public class InstallGameView {
+    
+    /* Attributes */
     private Stage primaryStage;
     private BorderPane arenaFrame;
-    public InstallGameView(BorderPane arenaFrame)
-    {
-       this.arenaFrame = arenaFrame; 
+
+    /* Constructor */
+    public InstallGameView(BorderPane arenaFrame) {
+        this.arenaFrame = arenaFrame;
     }
 
-    InstallGameView() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    public void addGame()
-    {
+    /**
+     * add game functionality and the necessary user interface.
+     */
+    public void addGame() {
         Button btn = new Button();
         btn.setText("add game");
-       
+
         Label name = new Label("Name:");
         Label visibility = new Label("Visibility (1/0):");
         Label gamePath = new Label("Game path:");
@@ -56,27 +56,19 @@ public class InstallGameView
         vBox.setPadding(new Insets(20));
         vBox.getChildren().addAll(name, nameField, visibility, visibilityField, gamePath, gamePathField, imagePath, imagePathField, btn);
         arenaFrame.setCenter(vBox);
-        
-        btn.setOnAction(e->
-        {
+
+        btn.setOnAction(e -> {
             int visibilityInt = 2;
-            if (visibilityField.getText().matches("1"))
-            {
+            if (visibilityField.getText().matches("1")) {
                 visibilityInt = 1;
-            }
-            else if (visibilityField.getText() == "0")
-            {
+            } else if (visibilityField.getText().matches("0")) {
                 visibilityInt = 0;
             }
-            if (nameField.getText().length() == 0 | gamePathField.getText().length() == 0 |imagePathField.getText().length() == 0| visibilityField.getText().length() == 0 | (visibilityInt != 0 & visibilityInt != 1))
-            {
+            if (nameField.getText().length() == 0 | gamePathField.getText().length() == 0 | imagePathField.getText().length() == 0 | visibilityField.getText().length() == 0 | (visibilityInt != 0 & visibilityInt != 1)) {
                 String text = "";
-                if (visibilityInt != 0 & visibilityInt != 1)
-                {
+                if (visibilityInt != 0 & visibilityInt != 1) {
                     text = ("visibility must be '1' or '0'");
-                }
-                else
-                {
+                } else {
                     text = ("None of the fields can be empty");
                 }
                 Text error = new Text(50, 50, text);
@@ -88,12 +80,10 @@ public class InstallGameView
                 Stage primary = new Stage();
                 primary.setScene(newScene);
                 primary.show();
-                okButton.setOnMouseClicked(event-> {
-                primary.close();
-                });                      
-            }
-            else
-            {
+                okButton.setOnMouseClicked(event -> {
+                    primary.close();
+                });
+            } else {
                 String gameName = nameField.getText();
                 String gamePathString = gamePathField.getText();
                 String imagePathString = imagePathField.getText();
@@ -102,7 +92,7 @@ public class InstallGameView
                 HandleGame gameHandler = new HandleGame();
                 gameHandler.installNewGame(game);
                 arenaFrame.getChildren().remove(vBox);
-            }           
+            }
         });
-    }    
+    }
 }

@@ -6,7 +6,6 @@
 package model.administration;
 
 import model.exceptions.GameIDNotFoundException;
-import java.io.FileNotFoundException;
 import java.sql.*;
 import java.util.ArrayList;
 /**
@@ -14,21 +13,29 @@ import java.util.ArrayList;
  * @author Nick
  */
 public class Library {
+    /* Attributes */
     private ArrayList<Game> gamesLibrary;
     private int size;   
-    
+    /* Constructor */
     public Library(){
         gamesLibrary = new ArrayList<>();
         size = 0;
     }
-    public ArrayList getgameLibrary(){
+    /**
+     * This method is a getter for games.
+     * @return an list with all games.
+     */
+    public ArrayList getGameLibrary(){
         /* tömmer gamesLibrary innan den uppdateras med alla spel */
         if(!gamesLibrary.isEmpty())
             gamesLibrary.clear();
-        this.updateLibrary();
+        this.selectLibrary();
         return this.gamesLibrary;
     }
-    public void updateLibrary() 
+    /**
+     * selects the games from the database.
+     */
+    private void selectLibrary() 
     {
         size = 0;
         try
@@ -56,9 +63,16 @@ public class Library {
         }
                
     }
+    /**
+     * Returns one game from the gamesLibrary, until
+     * there are no games left
+     * @param id
+     * @return
+     * @throws GameIDNotFoundException 
+     */
     public Game getGame(int id) throws GameIDNotFoundException
     {
-        this.updateLibrary();
+        this.selectLibrary();
         for(int i = 0; i < size; i ++)
         {
             if (gamesLibrary.get(i).getGameId() == id)

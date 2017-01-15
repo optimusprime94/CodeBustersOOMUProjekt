@@ -5,9 +5,6 @@
  */
 package model.administration;
 
-import model.exceptions.GameIDNotFoundException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.sql.*;
 
 
@@ -18,8 +15,10 @@ import java.sql.*;
  */
 public class HandleGame
 {
-    public HandleGame() {}
-   
+    /**
+     * 
+     * @param newGame 
+     */
     public void installNewGame(Game newGame)
     {
         try{
