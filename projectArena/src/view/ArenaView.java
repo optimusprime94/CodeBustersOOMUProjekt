@@ -118,7 +118,7 @@ public abstract class ArenaView {
         aboutArenaItem.setOnAction(e -> new AboutArenaView(arenaframe));
         homeItem.setOnAction(event -> {
 
-            ImageView iv = new ImageView(new Image("image/romanbattle.png"));
+            ImageView iv = new ImageView(new Image("view/image/romanbattle.png"));
             Pane pane = new Pane(iv);
             iv.fitWidthProperty().bindBidirectional(pane.layoutXProperty());
             iv.fitHeightProperty().bindBidirectional(pane.layoutYProperty());
