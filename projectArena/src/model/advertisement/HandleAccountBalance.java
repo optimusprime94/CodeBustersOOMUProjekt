@@ -9,23 +9,18 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.application.Application; 
-import javafx.geometry.Insets;
-import javafx.scene.Node;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.control.Button;
-import javafx.stage.Stage;
-import javafx.scene.Scene; 
-import model.administration.Game;
+
 /**
  *
- * @author JohnBosco
+ * 
  */
 public class HandleAccountBalance {
+    /**
+     * This function first checks if the advertiser is part of the database table,
+     * adds the advertiser if not, and increases their account balance by the given amount
+     * @param id
+     * @param money 
+     */
     public static void addFund(int id, int money)
     {
         try
@@ -43,6 +38,11 @@ public class HandleAccountBalance {
         } 
     }
 
+    /**
+     * This function return the account balance of the given userid
+     * @param id
+     * @return 
+     */
     public static int getBalance(int id) 
     {
         int balance = 0;
@@ -65,7 +65,11 @@ public class HandleAccountBalance {
         return(balance);
     }
     
-    
+    /**
+     * This function checks if the userId exists in the table and 
+     * adds it if it isn't
+     * @param id 
+     */
     private static void checkifExists(int id){
         try {
             Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
@@ -82,6 +86,10 @@ public class HandleAccountBalance {
         }
     }
     
+    /**
+     * This adds a user to the database table
+     * @param id 
+     */
     private static void addToDatabase(int id){
         try {
             Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
