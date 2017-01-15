@@ -9,6 +9,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application; 
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -30,6 +32,7 @@ public class HandleAccountBalance {
         {
             Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
             Statement statement = connection.createStatement();
+            HandleAccountBalance.checkifExists(id);
             String SQLMessage = "update advertiser set Cash = Cash + "+ money+" where ID = "+id+";";
             statement.executeUpdate(SQLMessage);
             connection.close();
@@ -60,5 +63,33 @@ public class HandleAccountBalance {
             System.out.print(ex.getMessage());
         }
         return(balance);
+    }
+    
+    
+    private static void checkifExists(int id){
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
+            Statement statement = connection.createStatement();
+            String SQLMessage = "Select* from advertiser where ID = " + id;
+            ResultSet resultSet = statement.executeQuery(SQLMessage);
+            if (!resultSet.next()){
+                addToDatabase(id);
+                connection.close();
+            }
+        } 
+        catch(SQLException ex){
+            System.out.print(ex.getMessage());
+        }
+    }
+    
+    private static void addToDatabase(int id){
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:sqlserver://hitsql-db.hb.se:56077;database=dbtht1629;user=dbtht1629;password=hiss99");
+            Statement statement = connection.createStatement();
+            String SQLMessage = "INSERT INTO advertiser (ID, Cash)\n" + "VALUES (" + id + ", 0)";
+             statement.executeUpdate(SQLMessage);
+        } catch (SQLException ex) {
+            System.out.print(ex.getMessage());
+        }
     }
 }
