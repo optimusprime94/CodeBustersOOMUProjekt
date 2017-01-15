@@ -63,7 +63,7 @@ class GameLibraryView {
                     break;
                 }
                 Game game = (Game) it.next();
-                Image gameImg = new Image(game.getImagePath(), 150, 250, false, false);
+                Image gameImg = new Image("view/"+ game.getImagePath(), 150, 250, false, false);
                 ImageView gameView = new ImageView(gameImg);
                 gamesgrid.addRow(row, gameView);
 
