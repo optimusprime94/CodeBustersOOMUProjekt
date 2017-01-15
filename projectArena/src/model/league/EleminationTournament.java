@@ -6,7 +6,7 @@
 package model.league;
 
 import model.administration.Game;
-import model.play.Match;
+import model.play.PlayMatch;
 import model.users.Player;
 
 /**
@@ -38,7 +38,7 @@ public class EleminationTournament extends Tournament
             while (scheme.matchesExists())
             {
                 Player[] nextPlayers = scheme.getNextPlayers();
-                Match match = new Match(game, nextPlayers[0], nextPlayers[1]);
+                PlayMatch match = new PlayMatch(game, nextPlayers[0], nextPlayers[1]);
                 System.out.print("");
                 //notifyGameReady(nextPlayers[0], match);
                 //notifyGameReady(nextPlayers[1], match);
