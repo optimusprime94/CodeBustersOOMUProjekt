@@ -9,92 +9,109 @@ import controller.GameStarter;
 import model.users.Player;
 import java.util.Random;
 import model.administration.Game;
-import java.io.FileNotFoundException;
-import java.sql.*;
 
 /**
  *
  * @author S143534
  */
 public class PlayMatch {
-    Player player,player1,player2;
+
+    Player player, player1, player2;
     private final Game game;
     int playerID;
     int matchID;
     private PlayMatch match;
+
     /**
-    * Constructor with only a Game to start with and creates a player 
-    * @param game 
-    */
+     * Constructor with only a Game to start with and creates a player
+     *
+     * @param game
+     */
     public PlayMatch(Game game) {
         this.game = game;
         player1 = new Player();
         Play();
     }
-    /** 
-     * Our constructor with 1 game and 2 players 
+
+    /**
+     * Our constructor with 1 game and 2 players
+     *
      * @param game
      * @param player1
-     * @param player2 
+     * @param player2
      */
-    public PlayMatch(Game game, Player player1,Player player2){
+    public PlayMatch(Game game, Player player1, Player player2) {
         this.game = game;
         this.player1 = player1;
         this.player2 = player2;
         Play();
-        
+
     }
+
     /**
-    * setMatchID sets the ID of the game  
-    * 
+     * setMatchID sets the ID of the game
+     *
      */
     public void setMatchID(int matchID) {
         this.matchID = matchID;
-        System.out.println("\n"+matchID);
+        System.out.println("\n" + matchID);
     }
+
     /**
-    * getMatchID gets the ID for the match 
-    * @return 
-    */
+     * getMatchID gets the ID for the match
+     *
+     * @return
+     */
     public int getMatchID() {
         return matchID;
     }
+
     /**
      * initizateMatch, initiate the match with 2 players
      *
-     *  
+     *
      */
-   protected void initiziateMatch(Player player1,Player player2){
-       Random rn = new Random();
-       int match = rn.nextInt(99999);
-       
-       player2 = findOpponent();
-       matchID = match;
-       setMatchID(matchID);
-       System.out.println("player1: "+player1);
-       System.out.println("player2: "+player2);
-       
-       
+    protected void initiziateMatch(Player player1, Player player2) {
+        Random rn = new Random();
+        int match = rn.nextInt(99999);
 
-    
+        player2 = findOpponent();
+        matchID = match;
+        setMatchID(matchID);
+        System.out.println("player1: " + player1);
+        System.out.println("player2: " + player2);
+
     }
-   /**
-    * Play, Main method for match, initiate the match and starts the game
-    *
-    */
-   public void Play(){
-   initiziateMatch(player1,player2);
-   new GameStarter(game);
-   }
-   public void getWinner(Player player1){
-       System.out.println("winner is: "+player1);
-       
-}
-   public Player findOpponent(){
-       Player player2;
-       player2 = new Player();
-   
-       return player2;
-   }
+
+    /**
+     * Play, Main method for match, initiate the match and starts the game
+     *
+     */
+    public void Play() {
+        initiziateMatch(player1, player2);
+        new GameStarter(game);
+    }
+
+    /**
+     * getWinner returns the winner of the Match
+     *
+     * @param player1
+     */
+    public void getWinner(Player player1) {
+        System.out.println("winner is: " + player1);
+
+    }
+
+    /**
+     * findOpponent finds a opponent for the player
+     *
+     * @return
+     */
+    public Player findOpponent() {
+        Player player2;
+        player2 = new Player();
+
+        return player2;
+    }
 
 }

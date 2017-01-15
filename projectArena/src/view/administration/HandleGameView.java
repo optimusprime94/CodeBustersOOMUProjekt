@@ -22,6 +22,9 @@ public class HandleGameView {
         this.arenaFrame = arenaFrame;
     }
 
+    /**
+     * show, shows these components for the User
+     */
     public void show() {
         Button installGame = new Button("Install New Game");
         Button deleteGame = new Button("Delete Game");

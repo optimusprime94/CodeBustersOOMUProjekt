@@ -27,7 +27,9 @@ public class TournamentStyleView {
         this.framepane.setCenter(grid);
 
     }
-
+    /**
+     * disp
+     */
     private void dispayTournaments() {
         /* Behöver hämta en lista med namn och status på alla tournaments.
          * för att kunna visa operator, och knapp för att ändra status.

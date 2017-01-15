@@ -8,15 +8,12 @@ package view;
 import controller.ArenaManager;
 import view.advertisement.AdvertisementView;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -32,21 +29,21 @@ public abstract class ArenaView {
     Menu homeMenu = new Menu("Home");
     Menu arenaMenu = new Menu("Arena");
 
-    /* attributer som subklasserna skall kunna komma åt och/ eller ändra. */
+    /* attributes that subclasses can access */
     protected String username = "Welcome to Arena!";
     protected BorderPane arenaframe;
     protected MenuBar menubar;
     protected int minWidth = 800, minHeight = 600;
-    /* MenuItems som skall följa med alla som ärver från arenaview */
+    /* MenuItems that should come with all subclasses */
     protected MenuItem logoutItem = new MenuItem("sign out");
     protected MenuItem homeItem = new MenuItem("Go to home");
     protected MenuItem aboutUsItem = new MenuItem("About us");
     protected MenuItem aboutArenaItem = new MenuItem("About Arena");
 
-    AdvertisementView adView;                                                   //Ändrad
+    AdvertisementView adView;                                                   
 
     public ArenaView(Stage stage) {
-        /* skapar stage och sätter stagens minsta möjliga storlek. */
+        /* create a stage at set its minimumsize*/
         this.stage = stage;
         this.stage.setMinHeight(minHeight);
         this.stage.setMinWidth(minWidth);
@@ -68,7 +65,7 @@ public abstract class ArenaView {
 
         scene.getStylesheets().add("view/arenastylesheet.css");
         arenaframe.setBackground(arenaTheme());
-        initMenu(); //anropar inställningarna för menyn
+        initMenu(); //calls after setup for the menu
         stage.setTitle("Arena");
         stage.setScene(scene);
         stage.show();
@@ -86,12 +83,14 @@ public abstract class ArenaView {
         return background;
 
     }
-
+/**
+ * initMenu initiate the menu
+ */
     private void initMenu() {
         arenaframe.setTop(menubar);
 
         menubar.setStyle(
-                "-fx-font-size: 20 pt;" // menubar, text storlek.
+                "-fx-font-size: 20 pt;" // menubar, text size.
                 + "-fx-font-family: Segoe UI Light;"
                 + "-fx-padding: 10 50 10 50;" // top, right, bottom, left
                 + "-fx-background-color: rgba(255, 255, 255, 0.5);"
@@ -113,7 +112,9 @@ public abstract class ArenaView {
         });
 
     }
-
+/**
+ * action contains the action for about arena
+ */
     private void actions() {
         aboutArenaItem.setOnAction(e -> new AboutArenaView(arenaframe));
         homeItem.setOnAction(event -> {

@@ -5,9 +5,7 @@
  */
 package view;
 
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 
 /**
@@ -22,7 +20,9 @@ public class AboutArenaView {
         this.arenaframe = arenaframe;
         displayAboutArena();
     }
-    
+    /**
+     * displayAboutArena displays text about this project 
+     */
     private void displayAboutArena(){
         String info = "Devoution and excellence,\n\n"
                 + "The foreground to developing the greatest to be, entertainment plattform.\n"

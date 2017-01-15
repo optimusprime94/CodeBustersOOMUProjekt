@@ -5,7 +5,6 @@
  */
 package view;
 
-import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import view.general.LoginView;
@@ -28,7 +27,9 @@ public class StartView extends ArenaView {
         setHomeButton();
     }
 
-
+/**
+ * setHomeButton 
+ */
     private void setHomeButton() {
         /* om det är startview som visas så ska hemknappen komma till login-sidan,
            ifall man klickat på andra meny knappar. */

@@ -32,7 +32,9 @@ public class CreateAccountView {
         this.stage = new Stage();
         stage.setScene(scene);
     }
-
+/**
+ * show, makes this view show to the user
+ */
     public void show() {
         Label nameLabel = new Label("User name");
         Label passwordLabel = new Label("Password");
