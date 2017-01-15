@@ -16,6 +16,7 @@ public class Operator extends User{
      * @return 
      */
  
+    @Override
     public  UserType getType(){
         return UserType.OPERATOR;
     }    

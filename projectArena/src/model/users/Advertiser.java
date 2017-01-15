@@ -9,14 +9,16 @@ package model.users;
  *
  * @author S153298
  */
-public class Advertiser extends User{
+public class Advertiser extends User {
+
     private double accountBalance;
-     
+
     /**
      * This function will return the userType for this class.
-     * @return 
+     *
+     * @return
      */
-    public  UserType getType(){
+    public UserType getType() {
         return UserType.ADVERTISER;
     }
 }

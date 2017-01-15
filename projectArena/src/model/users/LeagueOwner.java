@@ -11,13 +11,8 @@ package model.users;
  */
 public class LeagueOwner extends User{
     
-    private String namen;
     private int leagueOwnerID;
-    public LeagueOwner()
-    {
 
-    }
- 
     public  UserType getType(){
      /**
      * This function will return the userType for this class.

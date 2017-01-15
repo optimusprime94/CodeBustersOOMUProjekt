@@ -14,6 +14,7 @@ public class Player extends User{
      * This function will return the userType for this class.
      * @return 
      */
+    @Override
     public  UserType getType(){
         return UserType.PLAYER;
     }
