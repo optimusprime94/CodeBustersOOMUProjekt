@@ -27,8 +27,8 @@ public class CheckAccountBalanceView {
         
         btnAdd.setText("Add more funds");
         int currentCash = 50;
-        Label currentCashLabel = new Label(currentCash + "SEK");
-        Label amountLabel = new Label("Extra money");
+        Label currentCashLabel = new Label("Current Balance: " + currentCash + " SEK");
+        Label amountLabel = new Label("Add extra money");
        
         TextField amountField = new TextField();
         VBox vBox = new VBox();
